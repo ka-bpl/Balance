@@ -11,7 +11,7 @@ import sys
 import requests
 import shutil
 
-###
+##
 #global
 driver = webdriver.Chrome()
 driver.get('https://partnerka.project30.pro/')
