@@ -6,8 +6,6 @@ from selenium.webdriver.common.keys import Keys
 
 import time
 import unittest
-import HTMLTestRunner
-import sys
 import requests
 import shutil
 
@@ -25,7 +23,6 @@ driver = webdriver.Remote(
                 'trustAllSSLCertificates': True
             })
 
-#driver = webdriver.Chrome()
 driver.get('https://partnerka.project30.pro/')
 driver.maximize_window()
 wait = WebDriverWait(driver, 500)
@@ -866,14 +863,4 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(Selenium1_test_Pilot))
-
-    buf = open("/docs/Chesnokov/at_Insur.html", 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(
-        stream=buf,
-        title='ПРОВЕРКА МНОГО СТРАХОВОК',
-        description='Отчет по тестированию'
-    )
-    ret = not runner.run(suite).wasSuccessful()
-    sys.exit(ret)
+    unittest.main()
