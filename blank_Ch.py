@@ -21,7 +21,6 @@ wait = WebDriverWait(driver, 500)
 
 #centos = '/home/centos/'
 #
-#
 
 countIU = 2
 countAZS = 2
