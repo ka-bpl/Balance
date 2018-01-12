@@ -23,6 +23,21 @@ countIU = 2
 countAZS = 2
 countCP = 2
 
+# global
+browser = 'chrome'
+bv = '61'
+ip = '10.30.30.6'
+driver = webdriver.Remote(
+            command_executor='http://%s:4444/wd/hub' % ip,
+            desired_capabilities={
+                'browserName': browser,
+                'version': bv,
+                'setJavascriptEnabled': True,
+                'trustAllSSLCertificates': True
+            })
+# global d, wait
+# d = driver
+# wait = WebDriverWait(d, 500)
 
 with open(r"/docs/Chesnokov/variable_Chesnokov.txt") as file:
     array = [row.strip() for row in file]
