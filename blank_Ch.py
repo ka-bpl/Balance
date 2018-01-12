@@ -869,7 +869,7 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(Selenium1_test_Pilot))
 
-    buf = open("/home/maxim/Документы/report/Chesnokov/at_Insur.html", 'wb')
+    buf = open("/docs/Chesnokov/at_Insur.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
         title='ПРОВЕРКА МНОГО СТРАХОВОК',
