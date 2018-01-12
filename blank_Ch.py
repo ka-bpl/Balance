@@ -10,7 +10,7 @@ import requests
 import shutil
 
 ##
-#global
+# global
 browser = 'chrome'
 bv = '61'
 ip = '10.30.30.6'
@@ -32,9 +32,6 @@ countIU = 2
 countAZS = 2
 countCP = 2
 
-# global d, wait
-# d = driver
-# wait = WebDriverWait(d, 500)
 
 with open(r"/docs/Chesnokov/variable_Chesnokov.txt") as file:
     array = [row.strip() for row in file]
@@ -47,7 +44,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_name('password').send_keys('WVqd^i4R'+Keys.RETURN)
         time.sleep(2)
         print('Проходим процедуру авторизации')
-        #driver.find_element_by_class_name('PageHelpVideo')
         driver.find_element_by_xpath(
             "//div[@class='FmButtonClose__icon -wait-no FmButtonClose__icon--size-medium']").click()
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[@class='FmButtonLabel__wrap']")))
@@ -265,23 +261,23 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
             r'/docs/Chesnokov/6pass_Ch.jpg')
-        print("Загружен скан паспорта №5")
+        print("Загружен скан паспорта №6")
         time.sleep(1)
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
             r'/docs/Chesnokov/7pass_Ch.jpg')
-        print("Загружен скан паспорта №5")
+        print("Загружен скан паспорта №7")
         time.sleep(1)
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
             r'/docs/Chesnokov/8pass_Ch.jpg')
-        print("Загружен скан паспорта №5")
+        print("Загружен скан паспорта №8")
         time.sleep(1)
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
             r'/docs/Chesnokov/9pass_Ch.jpg')
-        print("Загружен скан паспорта №5")
+        print("Загружен скан паспорта №9")
         time.sleep(1)
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
             r'/docs/Chesnokov/10pass_Ch.jpg')
-        print("Загружен скан паспорта №5")
+        print("Загружен скан паспорта №10")
         time.sleep(1)
 # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
@@ -423,7 +419,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '16' + Keys.RETURN)
         time.sleep(0.5)
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test013.png')
         driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
@@ -449,7 +444,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
             print('вторая проверка Full Name')
         driver.find_element_by_id('birthPlace').send_keys(array[90])  # array[63]
         time.sleep(0.5)
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/fullname.png')
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
         try:
@@ -469,7 +463,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '17' + Keys.RETURN)
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test014.png')
         time.sleep(1)
         driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
         time.sleep(1)
@@ -480,9 +473,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_id('registrationAddress').send_keys(array[88])  # array[88]
         time.sleep(5)
         driver.find_element_by_id('registrationAddress').send_keys(Keys.ENTER)
-        time.sleep(2)
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/address.png')
-        time.sleep(1)
+        time.sleep(3)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
         try:
@@ -543,7 +534,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '18' + Keys.RETURN)
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test016_PassportIssuer.png')
         time.sleep(0.5)
         driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
         time.sleep(1)
@@ -561,7 +551,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
             driver.find_element_by_id('divisionCode').send_keys(array[9])   # array[9]
         except:
             print('не кликабелен элемент')
-        #driver.save_screenshot('/home/maxim/Документы/variable/screenShots/passiss.png')
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
@@ -586,7 +575,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test017_Consent.png')
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
@@ -606,21 +594,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
 
     def test017_PassportAddress(self):
-        self.skipTest(self)
-        time.sleep(1)
-        # self.skipTest(self)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[text()='Документы']")))
-        time.sleep(0.5)
-        driver.find_element_by_xpath("//SPAN[text()='Документы']").click()
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.ID, "query")))
-        driver.find_element_by_id('query').send_keys(num + '17' + Keys.RETURN)
-        t = driver.find_element_by_xpath("//TD[@data-label='ID']")
-        print(t.text)
-        driver.find_element_by_xpath('//*[contains(text(), "%s")]' % t.text).click()
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//TH[text()='Данные заявки']")))
-        #driver.save_screenshot(r'/home/maxim/Документы/report/2224//' + num + '.png')
-        driver.quit()
+        pass
 
     def test018_PassportIssuer(self):
         Selenium1_test_Pilot.test020_PTS(self)
@@ -632,12 +606,10 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '03' + Keys.RETURN)
         time.sleep(1)
-        #driver.save_screenshot('/home/maxim/Документы/variable/screenShots/dl.png')
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
         else:
-            #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test020_DL.png')
             driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
             print('')
         time.sleep(1)
@@ -649,7 +621,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//LABEL[@class='CheckBox__label']").click()  # Отметить как скан с фото
         driver.find_element_by_id('issuedAt').send_keys(array[37])  # Дата выдачи
         driver.find_element_by_id('INPUT_DRIVER_LICENSE_SERIES_NUMBER').send_keys(array[35])  # серия и номер ВУ
-        #driver.save_screenshot('/home/maxim/Документы/variable/screenShots/dlPASS.png')
         time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
@@ -682,7 +653,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/PTS.png')
         driver.find_element_by_id('correspondsToExpectedType--true').click()  # Документ является ПТС
         driver.find_element_by_id(
             'wellReadableAndHasNoDefects--true').click()  # Хорошо читается, дефектов скан. нет
@@ -813,7 +783,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonLabel__wrap")))
         driver.find_element_by_xpath(
             "(//DIV[@class='FmButtonRadio__icon -disabled-no -checked-no -focus-no'])[3]").click()
-        #driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test023.png')
         driver.find_element_by_class_name('FmButtonNext__wrap').click()
         print('Переходим в раздел 7. Выбор условий, выбираем оно из условий и нажимаем ДАЛЕЕ >')
 
@@ -858,8 +827,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Сделка']").click()
         print('Вводим расчётный счёт и переходим к доп. верификации')
 
-    def test025_TestEnd(self):
-        driver.quit()
+    def test025_NoName(self):
+        print('Test is finish. Stop.')
+        pass
 
 
 if __name__ == '__main__':
