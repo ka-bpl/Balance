@@ -13,17 +13,6 @@ import shutil
 
 ##
 #global
-driver = webdriver.Chrome()
-driver.get('https://partnerka.project30.pro/')
-driver.maximize_window()
-wait = WebDriverWait(driver, 500)
-
-
-countIU = 2
-countAZS = 2
-countCP = 2
-
-# global
 browser = 'chrome'
 bv = '61'
 ip = '10.30.30.6'
@@ -35,6 +24,17 @@ driver = webdriver.Remote(
                 'setJavascriptEnabled': True,
                 'trustAllSSLCertificates': True
             })
+
+#driver = webdriver.Chrome()
+driver.get('https://partnerka.project30.pro/')
+driver.maximize_window()
+wait = WebDriverWait(driver, 500)
+
+
+countIU = 2
+countAZS = 2
+countCP = 2
+
 # global d, wait
 # d = driver
 # wait = WebDriverWait(d, 500)
