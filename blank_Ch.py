@@ -3,7 +3,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from PyPDF2 import PdfFileWriter, PdfFileReader
 
 import time
 import unittest
@@ -19,8 +18,6 @@ driver.get('https://partnerka.project30.pro/')
 driver.maximize_window()
 wait = WebDriverWait(driver, 500)
 
-#centos = '/home/centos/'
-#
 
 countIU = 2
 countAZS = 2
