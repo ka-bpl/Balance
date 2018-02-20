@@ -49,7 +49,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//div[@class='FmButtonLabel__wrap']").click()
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@type='text'])[1]")))
         time.sleep(1)
-        driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test001_Login.png')
 
     def test002_CorrectCreateRequest(self):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[0]+Keys.ENTER)
@@ -102,7 +101,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[27]+Keys.ENTER)          # Кем приходится клиенту
         driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[29])            # Имя и отчество контактного лица
         driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[31])               # Телефон контактоного лица
-        driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test005.png')
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(1)
         driver.find_element_by_xpath(
@@ -128,7 +126,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[82])     # Количество лиц на иждивении
         time.sleep(1)
-        driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test006.png')
         driver.find_element_by_class_name('FmButtonNext__icon').click()
         print(' Заполняем поля корректно, и переходим к разделу "Параметры кредита и ТС"')
 
@@ -183,9 +180,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
-        driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test007.png')
         driver.find_element_by_class_name('FmButtonNext__icon').click()
-        driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/new_salon.png')
         print('Выбран тип страховки:', array[92])
         print(' Заполняем поля корректно, и переходим к разделу "Сбор документов"')
 
