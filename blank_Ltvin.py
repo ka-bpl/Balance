@@ -1015,6 +1015,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
+        driver.close()
 
 
 if __name__ == '__main__':

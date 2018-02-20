@@ -657,7 +657,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print('Ожидание окончание телефонной верификации...')
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonLabel__wrap")))
         print('Переходим в раздел 7. Выбор условий')
-
+        driver.close()
 
 if __name__ == '__main__':
     unittest.main()
