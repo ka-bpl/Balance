@@ -6,8 +6,6 @@ from selenium.webdriver.common.keys import Keys
 
 import time
 import unittest
-import HTMLTestRunner
-import sys
 import requests
 import shutil
 
