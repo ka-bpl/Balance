@@ -314,11 +314,10 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_name('query').send_keys(num + '16' + Keys.RETURN)
         time.sleep(1)
-        elem = driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]")
-        if elem.is_displayed():
-            elem.click()
-        else:
-            self.skipTest('This case must be verified by Robot Robby')
+        try:
+            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        except:
+            self.skipTest(self)
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(1.5)
