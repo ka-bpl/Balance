@@ -708,10 +708,10 @@ class Selenium1_test_Pilot(unittest.TestCase):
             "/docs/Litvin/фото_Литв.jpg"
         )  # Фотография заемщика
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            "/docs/Litvin/Litvin/DKP.pdf"
+            "/docs/Litvin/DKP.pdf"
         )  # Договор купли-продажи ТС
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-            "/docs/Litvin/Litvin/КвитПВ.png"
+            "/docs/Litvin/КвитПВ.png"
         )  # Квитанция об оплате ПВ
         driver.find_element_by_xpath("(//INPUT[@type='file'])[5]").send_keys(
             "/docs/Litvin/СчётЗаТС.png"
