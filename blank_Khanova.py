@@ -447,8 +447,12 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '18' + Keys.RETURN)
         time.sleep(0.5)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        time.sleep(1)
+        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
+            time.sleep(1)
+            driver.find_element_by_name('query').send_keys(Keys.RETURN)
+        else:
+            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Паспорт гражданина РФ')]]")))
