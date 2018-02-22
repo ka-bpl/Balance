@@ -834,8 +834,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Счёт на оплату')]]")))
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
-        driver.find_element_by_xpath("(//BUTTON[@type='button'])[1]").click()
-        driver.find_element_by_xpath("//BUTTON[@id='documentTypeId--11']").click()
+        # driver.find_element_by_xpath("(//BUTTON[@type='button'])[1]").click()
+        # driver.find_element_by_xpath("//BUTTON[@id='documentTypeId--11']").click()
         driver.find_element_by_id('invoiceNumber').send_keys('29')
         driver.find_element_by_id('inn').send_keys(inn)
         driver.find_element_by_id('kpp').send_keys('100000000')
@@ -867,9 +867,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
         time.sleep(0.5)
-        driver.find_element_by_xpath("(//BUTTON[@type='button'])[1]").click()
-        time.sleep(0.5)
-        driver.find_element_by_xpath("//BUTTON[@id='documentTypeId--29']").click()
+        # driver.find_element_by_xpath("(//BUTTON[@type='button'])[1]").click()
+        # time.sleep(0.5)
+        # driver.find_element_by_xpath("//BUTTON[@id='documentTypeId--29']").click()
         time.sleep(0.5)
         driver.find_element_by_id('invoiceNumber').send_keys('29')
         time.sleep(0.5)
