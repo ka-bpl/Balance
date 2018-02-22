@@ -292,7 +292,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_id('signature').click()
 
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[2]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[2]").click()
         driver.find_element_by_id('registrationFirst').click()
         #
         time.sleep(1)
@@ -748,31 +748,31 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_id('firstSpread').click()
 
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[2]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[2]").click()
         driver.find_element_by_id('signature').click()
 
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[3]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[3]").click()
         driver.find_element_by_id('registrationFirst').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[4]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[4]").click()
         driver.find_element_by_id('registrationSecond').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[5]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[5]").click()
         driver.find_element_by_id('registrationThird').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[6]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[6]").click()
         driver.find_element_by_id('registrationFourth').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[7]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[7]").click()
         driver.find_element_by_id('militaryDuty').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[8]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[8]").click()
         driver.find_element_by_id('maritalStatus').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[9]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[9]").click()
         driver.find_element_by_id('children').click()
         #
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[10]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[10]").click()
         driver.find_element_by_id('previouslyIssued').click()
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
