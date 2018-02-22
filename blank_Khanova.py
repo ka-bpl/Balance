@@ -295,7 +295,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_id('signature').click()
 
-        driver.find_element_by_xpath("(//DIV[@class='thumbnail__image'])[2]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[2]").click()
         driver.find_element_by_id('registrationFirst').click()
         #
         time.sleep(1)
