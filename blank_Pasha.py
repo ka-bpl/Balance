@@ -6,6 +6,8 @@ from selenium.webdriver.common.keys import Keys
 
 import time
 import unittest
+import HTMLTestRunner
+import sys
 
 ##
 # global
@@ -193,4 +195,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(Selenium1_test_Pilot))
+
+    buf = open("/docs/Pasha/at_Pasha.html", 'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(
+        stream=buf,
+        title='ПРОВЕРКА',
+        description='Отчет'
+    )
+    ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)
