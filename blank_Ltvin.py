@@ -786,6 +786,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
 
     def test026_DownloadIndTerms(self):
+        time.sleep(4)
         Selenium1_test_Pilot.test016_PassportIssuer(self)
 
     def test027_DownloadPaySchedul(self):
