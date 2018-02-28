@@ -9,6 +9,9 @@ import unittest
 import requests
 import shutil
 
+import urllib3
+urllib3.disable_warnings()
+
 ##
 # global
 browser = 'chrome'
@@ -979,7 +982,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
         time.sleep(1)
         driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        print('Счёт на оплату ТС')
+        print('Счёт на оплату Страхования жизни')
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
@@ -1010,7 +1013,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
         time.sleep(0.5)
-        print('Счёт на оплату ТС')
+        print('Счёт на оплату Страхования жизни')
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
