@@ -54,6 +54,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             "//div[@class='FmButtonClose__icon -wait-no FmButtonClose__icon--size-medium']").click()
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[@class='FmButtonLabel__wrap']")))
         driver.find_element_by_xpath("//div[@class='FmButtonLabel__wrap']").click()
+        time.sleep(2)
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@type='text'])[1]")))
         time.sleep(1)
 
@@ -1018,6 +1019,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(1)
         driver.close()
 
 
