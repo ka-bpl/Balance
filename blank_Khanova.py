@@ -9,6 +9,9 @@ import unittest
 import requests
 import shutil
 
+import urllib3
+urllib3.disable_warnings()
+
 ##
 # global
 browser = 'chrome'
