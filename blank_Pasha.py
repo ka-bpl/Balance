@@ -8,6 +8,7 @@ import time
 import unittest
 import HTMLTestRunner
 import sys
+import allure
 
 ##
 # global
@@ -37,6 +38,7 @@ with open(r"/docs/Pasha/variable_Pasha.txt") as file:
 
 
 class Selenium1_test_Pilot(unittest.TestCase):
+    @allure.step('First step of test 1 to 6')
     def test001_Login(self):
         wait.until(EC.element_to_be_clickable((By.NAME, 'login')))
         driver.find_element_by_name('login').send_keys('maxim.sidorkin@project30.pro')
