@@ -36,7 +36,6 @@ with open(r"/docs/Pasha/variable_Pasha.txt") as file:
 
 
 class Selenium1_test_Pilot(unittest.TestCase):
-    @allure.step('First step of test 1 to 6')
     def test001_Login(self):
         wait.until(EC.element_to_be_clickable((By.NAME, 'login')))
         driver.find_element_by_name('login').send_keys('maxim.sidorkin@project30.pro')
@@ -52,7 +51,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(2)
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@type='text'])[1]")))
         time.sleep(1)
-        allure.attach('just name')
 
     def test002_CorrectCreateRequest(self):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[0]+Keys.ENTER)
