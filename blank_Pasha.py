@@ -6,8 +6,6 @@ from selenium.webdriver.common.keys import Keys
 
 import time
 import unittest
-import HTMLTestRunner
-import sys
 import allure
 
 ##
@@ -54,6 +52,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(2)
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@type='text'])[1]")))
         time.sleep(1)
+        allure.attach('just name')
 
     def test002_CorrectCreateRequest(self):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[0]+Keys.ENTER)
@@ -197,14 +196,4 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(Selenium1_test_Pilot))
-
-    buf = open("/docs/reports/at_Pasha.html", 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(
-        stream=buf,
-        title='ПРОВЕРКА',
-        description='Отчет'
-    )
-    ret = not runner.run(suite).wasSuccessful()
-    sys.exit(ret)
+    unittest.main()
