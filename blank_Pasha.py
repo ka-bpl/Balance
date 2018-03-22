@@ -138,7 +138,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
-        driver.find_element_by_xpath("//*[text()[contains(.,'Новое авто, взнос 0-15%')]]").click()
+        driver.find_element_by_xpath("//*[text()[contains(.,'Новое авто, взнос более 15%')]]").click()
         time.sleep(1)
 
         time.sleep(1)
