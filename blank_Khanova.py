@@ -143,10 +143,10 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH,
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[41])     # Стоимость ТС, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[43])     # Первоначальный взнос, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[45])     # Срок кредита, мес.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[47])     # Комфортный платёж, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
@@ -160,12 +160,12 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         #
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51]+Keys.ENTER)          # Б/У
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
         #
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])                     # Серия и номер ПТС
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])                     # VIN автомобиля
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57]+Keys.ENTER)          # Марка
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59]+Keys.ENTER)         # Модель
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])  # Серия и номер ПТС
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])  # VIN автомобиля
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57] + Keys.ENTER)  # Марка
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59] + Keys.ENTER)  # Модель
         #
         time.sleep(1)
         print('Выбраны следуюшие условия: '
@@ -175,15 +175,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
         # Есть услуги страхования
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
+        driver.find_element_by_xpath(
+            "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
         time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()     # Тип страхования
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()  # Тип страхования
         time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[92]+Keys.ENTER)     # 92
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("18000.33")      #
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[92] + Keys.ENTER)  # 92
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("18000.33")  #
         time.sleep(0.5)
         try:
-            driver.find_element_by_xpath("//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
+            driver.find_element_by_xpath(
+                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
             print('Страховка не входит в кредит, добавляем вручную')
         except:
             print('Страховка входит в кредит "поумолчанию"')
