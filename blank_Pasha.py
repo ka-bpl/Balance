@@ -6,7 +6,6 @@ from selenium.webdriver.common.keys import Keys
 
 import time
 import unittest
-import allure
 
 ##
 # global
@@ -105,11 +104,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[31])               # Телефон контактоного лица
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет'][text()='Нет'])[2]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[12]").send_keys('102030')
-        time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonNext__icon")))
         driver.find_element_by_class_name('FmButtonNext__icon').click()
         print(' Заполняем поля корректно, и переходим к разделу "Дополнительная информация"')
@@ -133,57 +127,25 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test007_CorrectCreateCredit(self):
         time.sleep(0.5)
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[41])     # Стоимость ТС, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[43])     # Первоначальный взнос, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[45])     # Срок кредита, мес.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[47])     # Комфортный платёж, руб.
+        wait.until(EC.visibility_of_element_located((By.XPATH,
+                                                     "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)  # Auto salon
+        time.sleep(1)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Stoimost
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Srok credit
         time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
-        # TODO uncomment
-        driver.find_element_by_xpath("//*[text()[contains(.,'Указать информацию из ПТС сейчас')]]").click()
+        driver.find_element_by_xpath("//*[text()[contains(.,'Новое авто, взнос 0-15%')]]").click()
         time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").click()
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[49])
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(Keys.ENTER)
-        time.sleep(1)
-        #
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51]+Keys.ENTER)          # Б/У
-        #
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])                     # Серия и номер ПТС
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])                     # VIN автомобиля
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57]+Keys.ENTER)          # Марка
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59]+Keys.ENTER)         # Модель
-        #
-        time.sleep(1)
-        print('Выбраны следуюшие условия: '
-              'ТС -', array[57], array[59],
-              '\n VIN -', array[55], 'ПТС - ', array[53],
-              '\nАвто - ', array[51])
-        # Есть услуги страхования
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()     # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[92]+Keys.ENTER)     # 92
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("18000.33")      #
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath("//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит, добавляем вручную')
-        except:
-            print('Страховка входит в кредит "поумолчанию"')
-        # TODO uncomment
+
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
+
+        time.sleep(1.5)
         driver.find_element_by_class_name('FmButtonNext__icon').click()
-        print('Выбран тип страховки:', array[92])
         print(' Заполняем поля корректно, и переходим к разделу "Сбор документов"')
 
     def test008_UploadDocs(self):
