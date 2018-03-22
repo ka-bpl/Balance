@@ -520,10 +520,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
     def test018_PassportAddress(self):
         Selenium1_test_Pilot.test013_PassportFullName(self)
 
-    def test019_PassportIssuer(self):
-        Selenium1_test_Pilot.test021_PTS(self)
-
-    def test020_DL(self):
+    def test019_DL(self):
         time.sleep(0.5)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -559,112 +556,44 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
-    def test021_PTS(self):
+    def test020_call(self):
         time.sleep(0.5)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '04' + Keys.RETURN)
-        time.sleep(1)
-        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
-            time.sleep(1)
-            driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.ID, 'correspondsToExpectedType--true')))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        try:
-            driver.find_element_by_id('inputVehiclePassportSeriesNumber').send_keys(array[53])  # Серия и номер ПТС
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('vin').send_keys(array[55])  # VIN
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('brand').send_keys(array[57])  # Марка array[57]
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('model').send_keys(array[59])  # Модель array[59]
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('year').send_keys('2018')  # Год выпуска
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('enginePower').send_keys(array[69])  # Мощность
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('engineCapacity').send_keys(array[67])  # Объем двигателя, см³
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('engineType--gasoline').click()  # Тип двигателя
-        except:
-            print('Second check of PTS')
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[2]").click()
-        driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[4]").click()
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (ПТС)')
-        except:
-            print('ОШИБКА!')
-        print('Верифицируем ПТС')
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-
-    def test022_Call(self):
-        time.sleep(0.5)
-        print("Попытка верификации звонка")
-        driver.find_element_by_xpath("//SPAN[text()='Очередь задач']").click()
-        time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(0.5)
         driver.find_element_by_name('query').send_keys(num + Keys.RETURN)
         time.sleep(1)
-        try:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]")
-        except:
-            print(' Not found')
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(1.5)
+
+    def test021_call_accept(self):
         time.sleep(0.5)
+        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(1.5)
+
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        time.sleep(2)
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-        time.sleep(1)
+        time.sleep(2)
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
+        driver.find_element_by_name('query').send_keys(Keys.RETURN)
+        time.sleep(1.5)
+
+    def test022_Call(self):
+        while driver.find_elements_by_xpath("//*[text()[contains(.,'Взять себе')]]"):
+            Selenium1_test_Pilot.test021_call_accept(self)
 
     def test023_NoName(self):
         driver.close()
-        time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonLabel__wrap']")))
-        print('Ожидание окончание телефонной верификации...')
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonLabel__wrap")))
-        print('Переходим в раздел 7. Выбор условий')
-        driver.close()
+        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'FmButtonNext__icon')))
+
 
 if __name__ == '__main__':
     unittest.main()
