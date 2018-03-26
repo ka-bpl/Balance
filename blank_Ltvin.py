@@ -654,6 +654,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Сделка']").click()
         print('Вводим расчётный счёт и переходим к п. 9. Сделка')
 
+    @unittest.skip('*')
     def test025_NoName(self):
         time.sleep(1)
         driver.execute_script("window.open('https://verification-staging.project30.pro/admin/','_blank');")
@@ -707,19 +708,24 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
+    @unittest.skip('*')
     def test026_DownloadIndTerms(self):
         time.sleep(4)
         Selenium1_test_Pilot.test016_PassportIssuer(self)
 
+    @unittest.skip('*')
     def test027_DownloadPaySchedul(self):
         Selenium1_test_Pilot.test015_ScanQuality(self)
 
+    @unittest.skip('*')
     def test028_DownloadAnketa(self):
         Selenium1_test_Pilot.test014_PassportAddress(self)
 
+    @unittest.skip('*')
     def test029_DownloadAccoutnOpen(self):
         Selenium1_test_Pilot.test013_PassportFullName(self)
 
+    @unittest.skip('*')
     def test030_DownloadPayTS(self):
         Selenium1_test_Pilot.test013_PassportFullName(self)
 
