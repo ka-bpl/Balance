@@ -653,13 +653,13 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.75)
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Сделка']").click()
         print('Вводим расчётный счёт и переходим к п. 9. Сделка')
-
-    @unittest.skip('*')
-    def test025_NoName(self):
         time.sleep(1)
         driver.execute_script("window.open('https://verification-staging.project30.pro/admin/','_blank');")
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(3)
+
+    @unittest.skip('*')
+    def test025_NoName(self):
         try:
             driver.find_element_by_name('query').send_keys(num + '15' + Keys.RETURN)
             time.sleep(3)
