@@ -662,6 +662,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
         wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonNext__icon']")))
         print('Сделка прошла первую верификацию и \nвернулась в партнёрку на выбор условий')
+        driver.close()
 
 
 if __name__ == '__main__':
