@@ -656,7 +656,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(3)
 
-    def test027_DownloadPayInsLife(self):
+    def test027_PhotoVerify(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -666,13 +666,13 @@ class Selenium1_test_Pilot(unittest.TestCase):
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
+        print('Сверка фото ')
         driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test028_DownloadCardSignatures(self):
+    def test028_PayTS(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -680,13 +680,13 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
+        print("Проверка Счёта на оплату ТС")
         driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test029_UploadAllDocs(self):
+    def test029_PayTS(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -694,13 +694,13 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
+        print("Проверка Счёта на оплату ТС")
         driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test030_NoName(self):
+    def test030_DKP(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -708,27 +708,39 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
+        print("Проверка ДКП")
         driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test031_VerContract(self):
+    def test031_FirstPayment(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '24' + Keys.RETURN)
-        time.sleep(0.5)
-        time.sleep(1)
+        time.sleep(1.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
+        print('Проверка Квитанции ПВ')
         driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test032_VerReceipt(self):
+    def test032_PayInsLife(self):
+        time.sleep(1)
+        driver.find_element_by_name('query').clear()
+        time.sleep(1)
+        driver.find_element_by_name('query').send_keys(num + '25' + Keys.RETURN)
+        time.sleep(1.5)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+        print("Проверяем Счёт на оплату Страхования Жизни")
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
+        time.sleep(0.5)
+        driver.switch_to.alert.accept()
+        time.sleep(0.5)
+
+    def test033_PayInsLife(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -736,28 +748,16 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
-        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
-        time.sleep(0.5)
-        driver.switch_to.alert.accept()
-        time.sleep(0.5)
-
-    def test033_VerInvoice(self):
-        time.sleep(1)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '25' + Keys.RETURN)
-        time.sleep(0.5)
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
-
+        print("Проверяем Счёт на оплату Страхования Жизни")
         driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
     def test034_See(self):
+        time.sleep(2)
         driver.close()
+        time.sleep(2)
         driver.quit()
 
 
