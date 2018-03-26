@@ -342,50 +342,60 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_name('query').send_keys(num + '16' + Keys.RETURN)
         time.sleep(1)
-        try:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        except:
-            self.skipTest(self)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1.5)
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
+        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
+            time.sleep(1)
+            driver.find_element_by_name('query').send_keys(Keys.RETURN)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        try:
-            driver.find_element_by_id('lastName').send_keys(array[0])       # array[0]
-        except:
-            print('вторая проверка Full Name')
-        try:
-            driver.find_element_by_id('firstName').send_keys(array[1])      # array[1]
-        except:
-            print('вторая проверка Full Name')
-        try:
-            driver.find_element_by_id('secondName').send_keys(array[2])
-        except:
-            print('вторая проверка Full Name')
-        try:
-            driver.find_element_by_id('birthday').send_keys(array[11])      # array[11]
-        except:
-            print('вторая проверка Full Name')
-        try:
-            driver.find_element_by_id('birthPlace').send_keys(array[63])    # array[63]
-        except:
-            print('вторая проверка Full Name')
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены')    #
-        except:
-            print('ОШИБКА!')
-        print('Верифицируем ФИО')
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+
+        # try:
+        #     driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        # except:
+        #     self.skipTest(self)
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(1.5)
+        # wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
+        # for element in driver.find_elements_by_class_name('Switch__right'):
+        #     element.click()
+        # time.sleep(0.5)
+        # try:
+        #     driver.find_element_by_id('lastName').send_keys(array[0])       # array[0]
+        # except:
+        #     print('вторая проверка Full Name')
+        # try:
+        #     driver.find_element_by_id('firstName').send_keys(array[1])      # array[1]
+        # except:
+        #     print('вторая проверка Full Name')
+        # try:
+        #     driver.find_element_by_id('secondName').send_keys(array[2])
+        # except:
+        #     print('вторая проверка Full Name')
+        # try:
+        #     driver.find_element_by_id('birthday').send_keys(array[11])      # array[11]
+        # except:
+        #     print('вторая проверка Full Name')
+        # try:
+        #     driver.find_element_by_id('birthPlace').send_keys(array[63])    # array[63]
+        # except:
+        #     print('вторая проверка Full Name')
+        # time.sleep(0.5)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены')    #
+        # except:
+        #     print('ОШИБКА!')
+        # print('Верифицируем ФИО')
+        # driver.close()
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
 
     def test014_PassportAddress(self):
         time.sleep(0.5)
@@ -393,32 +403,39 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num+'17' + Keys.RETURN)
         time.sleep(1)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1.5)
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        driver.find_element_by_id('registrationAddress').send_keys(array[88])   # array[88]
-        time.sleep(1.5)
-        wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'Input__suggestions')))
-        driver.find_element_by_id('registrationAddress').send_keys(Keys.ENTER)
-        time.sleep(2)
-        time.sleep(1.5)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
 
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены')
-        except:
-            print('ОШИБКА!')
-        print('Верицифируем адрес')
-        driver.close()
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        driver.switch_to.alert.accept()
+        time.sleep(0.5)
+
+        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(1.5)
+        # wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
+        # for element in driver.find_elements_by_class_name('Switch__right'):
+        #     element.click()
+        # driver.find_element_by_id('registrationAddress').send_keys(array[88])   # array[88]
+        # time.sleep(1.5)
+        # wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'Input__suggestions')))
+        # driver.find_element_by_id('registrationAddress').send_keys(Keys.ENTER)
+        # time.sleep(2)
+        # time.sleep(1.5)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        #
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены')
+        # except:
+        #     print('ОШИБКА!')
+        # print('Верицифируем адрес')
+        # driver.close()
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
 
     def test015_ScanQuality(self):
         time.sleep(1)
@@ -472,70 +489,85 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '18' + Keys.RETURN)
-        time.sleep(0.5)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
         time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Паспорт гражданина РФ')]]")))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        try:
-            driver.find_element_by_id('issuedBy').send_keys(array[61])    #array[61]
-        except:
-            print('не кликабелен элемент')
-        time.sleep(1.5)
-        try:
-            driver.find_element_by_id('issuedAt').send_keys(array[7])   # array[7]
-        except:
-            print('не кликабелен элемент')
-        try:
-            driver.find_element_by_id('divisionCode').send_keys(array[9])   # array[9]
-        except:
-            print('не кликабелен элемент')
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (Кем выдан паспорт)')
-        except:
-            print('ОШИБКА!')
-        print('Верифицируем кем выдан паспорт')
-        driver.close()
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+
+        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(0.5)
+        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Паспорт гражданина РФ')]]")))
+        # for element in driver.find_elements_by_class_name('Switch__right'):
+        #     element.click()
+        # try:
+        #     driver.find_element_by_id('issuedBy').send_keys(array[61])    #array[61]
+        # except:
+        #     print('не кликабелен элемент')
+        # time.sleep(1.5)
+        # try:
+        #     driver.find_element_by_id('issuedAt').send_keys(array[7])   # array[7]
+        # except:
+        #     print('не кликабелен элемент')
+        # try:
+        #     driver.find_element_by_id('divisionCode').send_keys(array[9])   # array[9]
+        # except:
+        #     print('не кликабелен элемент')
+        # time.sleep(1)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены (Кем выдан паспорт)')
+        # except:
+        #     print('ОШИБКА!')
+        # print('Верифицируем кем выдан паспорт')
+        # driver.close()
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
 
     def test017_Consent(self):
         driver.find_element_by_name('query').clear()
         time.sleep(0.5)
         driver.find_element_by_name('query').send_keys(num + '20' + Keys.RETURN)
         time.sleep(1)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.ID, 'INPUT_PASSPORT_SERIES_NUMBER')))
-        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (Consent)')
-        except:
-            print('ОШИБКА!')
-        driver.close()
-        print('Верифицируем согласие на обработку персональных данных')
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+
+        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
+        # for element in driver.find_elements_by_class_name('Switch__right'):
+        #     element.click()
+        # time.sleep(1)
+        # wait.until(EC.element_to_be_clickable((By.ID, 'INPUT_PASSPORT_SERIES_NUMBER')))
+        # driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены (Consent)')
+        # except:
+        #     print('ОШИБКА!')
+        # driver.close()
+        # print('Верифицируем согласие на обработку персональных данных')
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
 
     def test018_PassportAddress(self):
         Selenium1_test_Pilot.test013_PassportFullName(self)
+        Selenium1_test_Pilot.test016_PassportIssuer(self)
 
     def test019_PassportIssuer(self):
         time.sleep(0.5)
