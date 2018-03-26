@@ -141,10 +141,10 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH,
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[41])     # Стоимость ТС, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[43])     # Первоначальный взнос, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[45])     # Срок кредита, мес.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[47])     # Комфортный платёж, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
@@ -158,12 +158,12 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         #
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51]+Keys.ENTER)          # Б/У
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
         #
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])                     # Серия и номер ПТС
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])                     # VIN автомобиля
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57]+Keys.ENTER)          # Марка
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59]+Keys.ENTER)         # Модель
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])  # Серия и номер ПТС
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])  # VIN автомобиля
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57] + Keys.ENTER)  # Марка
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59] + Keys.ENTER)  # Модель
         #
         time.sleep(1)
         print('Выбраны следуюшие условия: '
@@ -173,15 +173,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
         # Есть услуги страхования
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
+        driver.find_element_by_xpath(
+            "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
         time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()     # Тип страхования
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()  # Тип страхования
         time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[92]+Keys.ENTER)     # 92
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("18000.33")      #
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[92] + Keys.ENTER)  # 92
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("18000.33")  #
         time.sleep(0.5)
         try:
-            driver.find_element_by_xpath("//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
+            driver.find_element_by_xpath(
+                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
             print('Страховка не входит в кредит, добавляем вручную')
         except:
             print('Страховка входит в кредит "поумолчанию"')
@@ -208,7 +210,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         except:
             print("Документы Индивидуальные условия не обнаружены")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/docs/Litvin/PassFor6Step.pdf")    # passportIv.pdf PassFor6Step.pdf
+            "/docs/Litvin/passportLi.pdf")    # passportIv.pdf PassFor6Step.pdf
         print("Загружен скан паспорта")
         # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
@@ -292,18 +294,40 @@ class Selenium1_test_Pilot(unittest.TestCase):
             element.click()
         time.sleep(0.5)
         # первый скан
-        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])    #array[5]
+        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])  # array[5]
         time.sleep(0.5)
-        driver.find_element_by_id('signature').click()
+        driver.find_element_by_id('firstSpread').click()
 
         driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[2]").click()
+        driver.find_element_by_id('signature').click()
+
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[3]").click()
         driver.find_element_by_id('registrationFirst').click()
         #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[4]").click()
+        driver.find_element_by_id('registrationSecond').click()
+        #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[5]").click()
+        driver.find_element_by_id('registrationThird').click()
+        #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[6]").click()
+        driver.find_element_by_id('registrationFourth').click()
+        #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[7]").click()
+        driver.find_element_by_id('militaryDuty').click()
+        #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[8]").click()
+        driver.find_element_by_id('maritalStatus').click()
+        #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[9]").click()
+        driver.find_element_by_id('children').click()
+        #
+        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[10]").click()
+        driver.find_element_by_id('previouslyIssued').click()
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
         driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
         time.sleep(1)
-        print('Проходим тегирование паспорта')
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
@@ -514,9 +538,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         Selenium1_test_Pilot.test013_PassportFullName(self)
 
     def test019_PassportIssuer(self):
-        Selenium1_test_Pilot.test021_PTS(self)
-
-    def test020_DL(self):
         time.sleep(0.5)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -540,7 +561,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-
         try:
             time.sleep(2)
             driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
@@ -552,7 +572,37 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
-    def test021_PTS(self):
+    def test020_call(self):
+        time.sleep(0.5)
+        driver.find_element_by_name('query').clear()
+        time.sleep(0.5)
+        driver.find_element_by_name('query').send_keys(num + Keys.RETURN)
+        time.sleep(1)
+        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
+            time.sleep(1)
+            driver.find_element_by_name('query').send_keys(Keys.RETURN)
+        time.sleep(1.5)
+
+    def test021_call_accept(self):
+        time.sleep(0.5)
+        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(1.5)
+
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        time.sleep(2)
+        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        time.sleep(2)
+        driver.close()
+        time.sleep(0.5)
+        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(0.5)
+        driver.find_element_by_name('query').send_keys(Keys.RETURN)
+        time.sleep(1.5)
+        print('Верифицируем звонок')
+
+    def test022_Pts(self):
         time.sleep(0.5)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -619,52 +669,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
-    def test022_Call(self):
-        time.sleep(0.5)
-        ### call
-        print("Попытка верификации звонка")
-        driver.find_element_by_xpath("//SPAN[text()='Очередь задач']").click()
-        time.sleep(1)
-        driver.find_element_by_name('query').clear()
-        time.sleep(0.5)
-        driver.find_element_by_name('query').send_keys(num + Keys.RETURN)
-        time.sleep(1)
-        try:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]")
-        except:
-            print(' Not found')
-        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
-            time.sleep(1)
-            driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(0.5)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        time.sleep(1)
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-        time.sleep(1)
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(0.5)
-
     def test023_NoName(self):
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonLabel__wrap']")))
-        # описание элементов страницы
-        print('Ожидание окончание телефонной верификации...')
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonLabel__wrap")))
-        driver.find_element_by_xpath(
-            "(//DIV[@class='FmButtonRadio__icon -disabled-no -checked-no -focus-no'])[2]").click()
-        driver.find_element_by_class_name('FmButtonNext__wrap').click()
-        print('Переходим в раздел 7. Выбор условий, выбираем оно из условий и нажимаем ДАЛЕЕ >')
+        Selenium1_test_Pilot.test022_Pts(self)
 
     def test024_NoName(self):
+        time.sleep(0.5)
+        driver.close()
+        driver.switch_to.window(driver.window_handles[-1])
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonNext__icon']")))
+        print('Сделка прошла первую верификацию и \nвернулась в партнёрку на выбор условий')
+        driver.find_element_by_xpath("//DIV[@class='FmButtonNext__icon']").click()
+        #
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Редактировать реквизиты')]]")))
         time.sleep(1.5)
         driver.find_element_by_xpath("//*[text()[contains(.,'Редактировать реквизиты')]]").click()
