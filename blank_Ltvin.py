@@ -576,7 +576,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
     def test023_NoName(self):
         Selenium1_test_Pilot.test022_Pts(self)
 
-    def test024_NoName(self):
+    def test024_Choose_deal_condition(self):
         time.sleep(0.5)
         driver.close()
         driver.switch_to.window(driver.window_handles[-1])
@@ -586,6 +586,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             "(//DIV[@class='FmButtonRadio__icon -disabled-no -checked-no -focus-no'])[2]").click()
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__icon']").click()
         #
+    def test025_Deal(self):
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Редактировать реквизиты')]]")))
         time.sleep(1.5)
         driver.find_element_by_xpath("//*[text()[contains(.,'Редактировать реквизиты')]]").click()
@@ -595,39 +596,36 @@ class Selenium1_test_Pilot(unittest.TestCase):
         global amouth
         _ = driver.find_element_by_class_name('PageRequestStep08__orderHeader').text
         amouth = _[11:18]
-        print(amouth)
+        #print(amouth)
         global inn
         _ = driver.find_element_by_xpath("(//DIV[@class='ForForm__RowBox ForForm__TableRowsRow'])[2]").text
         inn = _[4:14]
-        print(inn)
+        #print(inn)
         global bik
         _ = driver.find_element_by_xpath("(//DIV[@class='ForForm__RowBox ForForm__TableRowsRow'])[4]").text
         bik = _[4:13]
-        print(bik)
+        #print(bik)
         global rs
         _ = driver.find_element_by_xpath("(//DIV[@class='ForForm__RowBox ForForm__TableRowsRow'])[5]").text
         rs = _[15:35]
-        print(rs)
-
+        #print(rs)
         # ins
         global innIns
         _ = driver.find_element_by_xpath("(//DIV[@class='ForForm__RowBox ForForm__TableRowsRow'])[7]").text
         innIns = _[4:14]
-        print('ИНН страховки -', innIns)
+        #print('ИНН страховки -', innIns)
         global bikIns
         _ = driver.find_element_by_xpath("(//DIV[@class='ForForm__RowBox ForForm__TableRowsRow'])[9]").text
         bikIns = _[4:13]
-        print('БИК страховки', bikIns)
+        #print('БИК страховки', bikIns)
         global rsIns
         _ = driver.find_element_by_xpath("(//DIV[@class='ForForm__RowBox ForForm__TableRowsRow'])[10]").text
         rsIns = _[15:35]
-        print('РС страховки', rsIns)
-
+        #print('РС страховки', rsIns)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
-        # driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-        #     "/docs/Litvin/passportLi.pdf"
-        # )  # Паспорт(все стр., цветные)
+
+    def test026_AttachDocs(self):
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
             "/docs/Litvin/фото_Литв.jpg"
         )  # Фотография заемщика
@@ -658,78 +656,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(3)
 
-    @unittest.skip('*')
-    def test025_NoName(self):
-        try:
-            driver.find_element_by_name('query').send_keys(num + '15' + Keys.RETURN)
-            time.sleep(3)
-            string = driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-            print(string.text)
-        except:
-            print('Element not found')
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1.5)
-        wait.until(EC.element_to_be_clickable((By.ID, 'INPUT_PASSPORT_SERIES_NUMBER')))
-        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])  # array[5]
-        time.sleep(0.5)
-        driver.find_element_by_id('firstSpread').click()
-
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[2]").click()
-        driver.find_element_by_id('signature').click()
-
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[3]").click()
-        driver.find_element_by_id('registrationFirst').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[4]").click()
-        driver.find_element_by_id('registrationSecond').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[5]").click()
-        driver.find_element_by_id('registrationThird').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[6]").click()
-        driver.find_element_by_id('registrationFourth').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[7]").click()
-        driver.find_element_by_id('militaryDuty').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[8]").click()
-        driver.find_element_by_id('maritalStatus').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[9]").click()
-        driver.find_element_by_id('children').click()
-        #
-        driver.find_element_by_xpath("(//BUTTON[@class='thumbnail__image'])[10]").click()
-        driver.find_element_by_id('previouslyIssued').click()
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        time.sleep(1)
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-
-    @unittest.skip('*')
-    def test026_DownloadIndTerms(self):
-        time.sleep(4)
-        Selenium1_test_Pilot.test016_PassportIssuer(self)
-
-    @unittest.skip('*')
-    def test027_DownloadPaySchedul(self):
-        Selenium1_test_Pilot.test015_ScanQuality(self)
-
-    @unittest.skip('*')
-    def test028_DownloadAnketa(self):
-        Selenium1_test_Pilot.test014_PassportAddress(self)
-
-    @unittest.skip('*')
-    def test029_DownloadAccoutnOpen(self):
-        Selenium1_test_Pilot.test013_PassportFullName(self)
-
-    @unittest.skip('*')
-    def test030_DownloadPayTS(self):
-        Selenium1_test_Pilot.test013_PassportFullName(self)
-
-    def test031_DownloadPayInsLife(self):
+    def test027_DownloadPayInsLife(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -745,23 +672,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # else:
-        #     driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Проверка фотографий')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # time.sleep(1)
-        # print('Проходим Сверку фото')
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-
-    def test032_DownloadCardSignatures(self):
+    def test028_DownloadCardSignatures(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -775,33 +686,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(1)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Счёт на оплату')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # driver.find_element_by_xpath("(//BUTTON[@type='button'])[1]").click()
-        # driver.find_element_by_xpath("//BUTTON[@id='documentTypeId--11']").click()
-        # driver.find_element_by_id('invoiceNumber').send_keys('29')
-        # driver.find_element_by_id('inn').send_keys(inn)
-        # driver.find_element_by_id('kpp').send_keys('100000000')
-        # driver.find_element_by_id('receiverName').send_keys('ООО "Автолегион"')
-        # driver.find_element_by_id('accountNumber').send_keys(rs)
-        # driver.find_element_by_id('bik').send_keys(bik)
-        # driver.find_element_by_id('amount').send_keys(amouth)
-        # driver.find_element_by_id('vatAmount').send_keys('1')
-        # time.sleep(1)
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # time.sleep(1)
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # print('Счёт на оплату ТС')
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-
-    def test033_UploadAllDocs(self):
+    def test029_UploadAllDocs(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -815,35 +700,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(1)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Счёт на оплату')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # time.sleep(0.5)
-        # driver.find_element_by_xpath("(//BUTTON[@type='button'])[1]").click()
-        # time.sleep(0.5)
-        # driver.find_element_by_xpath("//BUTTON[@id='documentTypeId--29']").click()
-        # time.sleep(0.5)
-        # driver.find_element_by_id('invoiceNumber').send_keys('29')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('kpp').send_keys('100000000')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('receiverName').send_keys('ООО "Автолегион"')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('vatAmount').send_keys('1')
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # time.sleep(1)
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # wait.until(EC.visibility_of_element_located(
-        #     (By.XPATH, "//DIV[@class='Wait__message-text'][text()='Все документы проверены']")))
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-
-    def test034_NoName(self):
+    def test030_NoName(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -857,34 +714,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(1)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Договор купли-продажи')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # time.sleep(0.5)
-        # driver.find_element_by_id('lastName').send_keys(array[0])
-        # time.sleep(0.5)
-        # driver.find_element_by_id('firstName').send_keys(array[1])
-        # time.sleep(0.5)
-        # driver.find_element_by_id('inn').send_keys(inn)
-        # time.sleep(0.5)
-        # driver.find_element_by_id('vin').send_keys(array[55])
-        # time.sleep(0.5)
-        # driver.find_element_by_id('amount').send_keys('625000')
-        # time.sleep(3)
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # time.sleep(1)
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # wait.until(EC.visibility_of_element_located(
-        #     (By.XPATH, "//DIV[@class='Wait__message-text'][text()='Все документы проверены']")))
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-
-    def test035_VerContract(self):
+    def test031_VerContract(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -898,27 +728,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(1)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Квитанция об оплате ПВ')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # driver.find_element_by_id('lastName').send_keys(array[0])
-        # driver.find_element_by_id('firstName').send_keys(array[1])
-        # driver.find_element_by_id('secondName').send_keys(array[2])
-        # driver.find_element_by_id('amount').send_keys('237500')
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # time.sleep(1)
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # wait.until(EC.visibility_of_element_located(
-        #     (By.XPATH, "//DIV[@class='Wait__message-text'][text()='Все документы проверены']")))
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-
-    def test036_VerReceipt(self):
+    def test032_VerReceipt(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -932,39 +742,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(1)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Счёт на оплату')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # time.sleep(0.5)
-        # driver.find_element_by_id('invoiceNumber').send_keys('22')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('inn').send_keys(innIns)
-        # time.sleep(0.5)
-        # driver.find_element_by_id('kpp').send_keys('100000000')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('receiverName').send_keys('ООО "СтрахЖизни"')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('accountNumber').send_keys(rsIns)
-        # time.sleep(0.5)
-        # driver.find_element_by_id('bik').send_keys(bikIns)
-        # time.sleep(0.5)
-        # driver.find_element_by_id('amount').send_keys('18000.33')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('vatAmount').send_keys('1')
-        # time.sleep(1)
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # time.sleep(1)
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # print('Счёт на оплату Страхования жизни')
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-
-    def test037_VerInvoice(self):
+    def test033_VerInvoice(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -978,32 +756,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-        # driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        # time.sleep(1)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(0.5)
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Счёт на оплату')]]")))
-        # for element in driver.find_elements_by_class_name('Switch__right'):
-        #     element.click()
-        # time.sleep(0.5)
-        # driver.find_element_by_id('invoiceNumber').send_keys('22')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('kpp').send_keys('100000000')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('receiverName').send_keys('ООО "СтрахЖизни"')
-        # time.sleep(0.5)
-        # driver.find_element_by_id('vatAmount').send_keys('1')
-        # time.sleep(1)
-        # wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='Button__content']")))
-        # time.sleep(1)
-        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        # time.sleep(0.5)
-        # print('Счёт на оплату Страхования жизни')
-        # driver.close()
-        # time.sleep(0.5)
-        # driver.switch_to.window(driver.window_handles[-1])
-        # time.sleep(1)
-        # driver.close()
+    def test034_See(self):
+        driver.close()
+        driver.quit()
 
 
 if __name__ == '__main__':
