@@ -582,6 +582,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
         wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonNext__icon']")))
         print('Сделка прошла первую верификацию и \nвернулась в партнёрку на выбор условий')
+        driver.find_element_by_xpath(
+            "(//DIV[@class='FmButtonRadio__icon -disabled-no -checked-no -focus-no'])[2]").click()
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__icon']").click()
         #
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Редактировать реквизиты')]]")))
