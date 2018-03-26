@@ -585,14 +585,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_name('query').send_keys(Keys.RETURN)
         time.sleep(1.5)
 
-    def test022_Call(self):
-        while driver.find_elements_by_xpath("//*[text()[contains(.,'Взять себе')]]"):
-            Selenium1_test_Pilot.test021_call_accept(self)
-
-    def test023_NoName(self):
-        driver.close()
-        driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'FmButtonNext__icon')))
+    # def test022_Call(self):
+    #     while driver.find_elements_by_xpath("//*[text()[contains(.,'Взять себе')]]"):
+    #         Selenium1_test_Pilot.test021_call_accept(self)
+    #
+    # def test023_NoName(self):
+    #     driver.close()
+    #     driver.switch_to.window(driver.window_handles[-1])
+    #     wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'FmButtonNext__icon')))
 
 
 if __name__ == '__main__':
