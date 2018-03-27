@@ -393,7 +393,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         color.click()
         no_def = driver.find_element_by_xpath("//*[text()[contains(.,'Дефектов нет')]]")
         no_def.click()
-        c = 9
+        c = 8
         while c > 0:
             color.click()
             no_def.click()
