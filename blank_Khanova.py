@@ -414,35 +414,43 @@ class Selenium1_test_Pilot(unittest.TestCase):
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-            print('Нашел и вышел из цикла')
         time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//BUTTON[@class='ThumbnailView__item'])[1]")))
-        driver.find_element_by_xpath("(//BUTTON[@class='ThumbnailView__item'])[1]").click()
-        time.sleep(1)
-        color = driver.find_element_by_xpath("//*[text()[contains(.,'Цветной')]]")  # Чёрно-белый / Цветной
-        color.click()
-        no_def = driver.find_element_by_xpath("//*[text()[contains(.,'Дефектов нет')]]")
-        no_def.click()
-        c = 8
-        while c > 0:
-            color.click()
-            no_def.click()
-            c -= 1
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (ПТС)')
-        except:
-            print('ОШИБКА!')
+
+        # else:
+        #     driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        #     print('Нашел и вышел из цикла')
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(0.5)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "(//BUTTON[@class='ThumbnailView__item'])[1]")))
+        # driver.find_element_by_xpath("(//BUTTON[@class='ThumbnailView__item'])[1]").click()
+        # time.sleep(1)
+        # color = driver.find_element_by_xpath("//*[text()[contains(.,'Цветной')]]")  # Чёрно-белый / Цветной
+        # color.click()
+        # no_def = driver.find_element_by_xpath("//*[text()[contains(.,'Дефектов нет')]]")
+        # no_def.click()
+        # c = 8
+        # while c > 0:
+        #     color.click()
+        #     no_def.click()
+        #     c -= 1
+        # time.sleep(0.5)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены (ПТС)')
+        # except:
+        #     print('ОШИБКА!')
         print('Проверяем качество сканов')
-        driver.close()
+        # driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
