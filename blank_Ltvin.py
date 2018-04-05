@@ -502,7 +502,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.ID, 'correspondsToExpectedType--true')))
+        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
         try:
