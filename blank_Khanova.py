@@ -314,7 +314,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test012_InputData(self):
         Selenium1_test_Pilot.test016_PassportIssuer(self)
-        Selenium1_test_Pilot.test014_PassportAddress(self)
+        #Selenium1_test_Pilot.test014_PassportAddress(self)
 
     def test013_PassportFullName(self):
         time.sleep(1)
@@ -513,6 +513,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         #driver.switch_to.window(driver.window_handles[-1])
 
     def test017_Consent(self):
+        wait = WebDriverWait(driver, 5)
+
         driver.find_element_by_name('query').clear()
         time.sleep(0.5)
         driver.find_element_by_name('query').send_keys(num + '20' + Keys.RETURN)
@@ -544,7 +546,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         # driver.close()
         print('Верифицируем согласие на обработку персональных данных')
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        #driver.switch_to.window(driver.window_handles[-1])
 
     def test018_PassportAddress(self):
         Selenium1_test_Pilot.test013_PassportFullName(self)
