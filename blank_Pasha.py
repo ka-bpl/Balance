@@ -129,17 +129,25 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH,
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)  # Auto salon
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)
         time.sleep(1)
+        driver.find_element_by_xpath(
+            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description'])[1]").click()
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Stoimost
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Srok credit
+        time.sleep(1)
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
-        driver.find_element_by_xpath("//*[text()[contains(.,'Новое авто, взнос более 15%')]]").click()
+        driver.find_element_by_xpath("//*[text()[contains(.,'Указать информацию из ПТС сейчас')]]").click()
+        # Информация об автосалоне и ТС
+        # Указать информацию из ПТС сейчас
         time.sleep(1)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").click()
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[48])
 
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
