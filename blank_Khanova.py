@@ -560,32 +560,39 @@ class Selenium1_test_Pilot(unittest.TestCase):
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-            print('')
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(0.5)
-        driver.find_element_by_id('correspondsToExpectedType--true').click()  # Документ является в/у
-        driver.find_element_by_id(
-            'wellReadableAndHasNoDefects--true').click()  # Хорошо читается, дефектов скан. нет
-        driver.find_element_by_xpath("//LABEL[@class='CheckBox__label']").click()  # Отметить как скан с фото
-        driver.find_element_by_id('issuedAt').send_keys(array[37])  # Дата выдачи
-        driver.find_element_by_id('INPUT_DRIVER_LICENSE_SERIES_NUMBER').send_keys(array[35])  # серия и номер ВУ
-        time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
 
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (ВУ)')
-        except:
-            print('ОШИБКА!')
-        print('Верифицируем водительское удостоверение')
-        driver.close()
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        driver.switch_to.alert.accept()
+        time.sleep(0.5)
+
+        # else:
+        #     driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        #     print('')
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(0.5)
+        # driver.find_element_by_id('correspondsToExpectedType--true').click()  # Документ является в/у
+        # driver.find_element_by_id(
+        #     'wellReadableAndHasNoDefects--true').click()  # Хорошо читается, дефектов скан. нет
+        # driver.find_element_by_xpath("//LABEL[@class='CheckBox__label']").click()  # Отметить как скан с фото
+        # driver.find_element_by_id('issuedAt').send_keys(array[37])  # Дата выдачи
+        # driver.find_element_by_id('INPUT_DRIVER_LICENSE_SERIES_NUMBER').send_keys(array[35])  # серия и номер ВУ
+        # time.sleep(0.5)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        #
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены (ВУ)')
+        # except:
+        #     print('ОШИБКА!')
+        print('Верифицируем водительское удостоверение')
+        # driver.close()
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
 
     def test020_call(self):
         time.sleep(0.5)
