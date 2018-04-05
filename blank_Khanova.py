@@ -463,36 +463,43 @@ class Selenium1_test_Pilot(unittest.TestCase):
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Паспорт гражданина РФ')]]")))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        try:
-            driver.find_element_by_id('issuedBy').send_keys(array[61])    #array[61]
-        except:
-            print('не кликабелен элемент')
-        time.sleep(1.5)
-        try:
-            driver.find_element_by_id('issuedAt').send_keys(array[7])   # array[7]
-        except:
-            print('не кликабелен элемент')
-        try:
-            driver.find_element_by_id('divisionCode').send_keys(array[9])   # array[9]
-        except:
-            print('не кликабелен элемент')
-        time.sleep(1)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (Кем выдан паспорт)')
-        except:
-            print('ОШИБКА!')
+
+        # else:
+        #     driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        # time.sleep(0.5)
+        # driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(0.5)
+        # wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Паспорт гражданина РФ')]]")))
+        # for element in driver.find_elements_by_class_name('Switch__right'):
+        #     element.click()
+        # try:
+        #     driver.find_element_by_id('issuedBy').send_keys(array[61])    #array[61]
+        # except:
+        #     print('не кликабелен элемент')
+        # time.sleep(1.5)
+        # try:
+        #     driver.find_element_by_id('issuedAt').send_keys(array[7])   # array[7]
+        # except:
+        #     print('не кликабелен элемент')
+        # try:
+        #     driver.find_element_by_id('divisionCode').send_keys(array[9])   # array[9]
+        # except:
+        #     print('не кликабелен элемент')
+        # time.sleep(1)
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        # driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
+        # try:
+        #     time.sleep(2)
+        #     driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
+        #     print('Все документы проверены (Кем выдан паспорт)')
+        # except:
+        #     print('ОШИБКА!')
         print('Верифицируем кем выдан паспорт')
         driver.close()
         time.sleep(0.5)
