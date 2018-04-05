@@ -501,9 +501,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         # except:
         #     print('ОШИБКА!')
         print('Верифицируем кем выдан паспорт')
-        driver.close()
+        #driver.close()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        #driver.switch_to.window(driver.window_handles[-1])
 
     def test017_Consent(self):
         driver.find_element_by_name('query').clear()
