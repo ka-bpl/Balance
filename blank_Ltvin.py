@@ -450,31 +450,13 @@ class Selenium1_test_Pilot(unittest.TestCase):
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-            print('')
         time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.find_element_by_id('correspondsToExpectedType--true').click()  # Документ является в/у
-        driver.find_element_by_id(
-            'wellReadableAndHasNoDefects--true').click()  # Хорошо читается, дефектов скан. нет
-        driver.find_element_by_xpath("//LABEL[@class='CheckBox__label']").click()  # Отметить как скан с фото
-        driver.find_element_by_id('issuedAt').send_keys(array[37])  # Дата выдачи
-        driver.find_element_by_id('INPUT_DRIVER_LICENSE_SERIES_NUMBER').send_keys(array[35])  # серия и номер ВУ
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (ВУ)')
-        except:
-            print('ОШИБКА!')
-        print('Верифицируем водительское удостоверение')
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
 
     def test020_call(self):
         time.sleep(0.5)
@@ -524,41 +506,65 @@ class Selenium1_test_Pilot(unittest.TestCase):
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
         try:
+            driver.find_element_by_id('inputVehiclePassportSeriesNumber').click()
+            time.sleep(0.5)
             driver.find_element_by_id('inputVehiclePassportSeriesNumber').send_keys(array[53])  # Серия и номер ПТС
         except:
             print('Second check of PTS')
         try:
+            driver.find_element_by_id('vin').click()
+            time.sleep(0.5)
             driver.find_element_by_id('vin').send_keys(array[55])  # VIN
         except:
             print('Second check of PTS')
         try:
+            driver.find_element_by_id('brand')
+            time.sleep(0.5)
             driver.find_element_by_id('brand').send_keys(array[57])  # Марка array[57]
         except:
             print('Second check of PTS')
         try:
+            driver.find_element_by_id('model').click()
+            time.sleep(0.5)
             driver.find_element_by_id('model').send_keys(array[59])  # Модель array[59]
         except:
             print('Second check of PTS')
         try:
+            driver.find_element_by_id('year').click()
+            time.sleep(0.5)
             driver.find_element_by_id('year').send_keys('2018')  # Год выпуска
         except:
             print('Second check of PTS')
         try:
+            driver.find_element_by_id('enginePower').click()
+            time.sleep(0.5)
             driver.find_element_by_id('enginePower').send_keys(array[69])  # Мощность
         except:
             print('Second check of PTS')
         try:
+            driver.find_element_by_id('engineCapacity').click()
+            time.sleep(0.5)
             driver.find_element_by_id('engineCapacity').send_keys(array[67])  # Объем двигателя, см³
         except:
             print('Second check of PTS')
         try:
-            driver.find_element_by_id('engineType--gasoline').click()  # Тип двигателя
+            driver.find_element_by_xpath("(//BUTTON[@class='Selector__item'])[1]").click()
+            # driver.find_element_by_id('engineType--gasoline').click()  # Тип двигателя
         except:
             print('Second check of PTS')
         time.sleep(0.5)
         driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[2]").click()
         driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[4]").click()
         time.sleep(1)
+        for element in driver.find_elements_by_class_name('Switch__right'):
+            element.click()
+        time.sleep(0.5)
+        try:
+            driver.find_element_by_id('issuedAt').click()
+            time.sleep(0.5)
+            driver.find_element_by_id('issuedAt').send_keys('31122017')
+        except:
+            print('Это не ГОСПРОГРАММА')
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
 
