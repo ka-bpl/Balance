@@ -164,8 +164,13 @@ class Selenium1_test_Pilot(unittest.TestCase):
         #
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])  # Серия и номер ПТС
         driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])  # VIN автомобиля
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57] + Keys.ENTER)  # Марка
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59] + Keys.ENTER)  # Модель
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57])  # Марка
+        time.sleep(0.5)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(Keys.RETURN)
+        time.sleep(0.5)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59])  # Модель
+        time.sleep(0.5)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(Keys.RETURN)
         #
         time.sleep(1)
         print('Выбраны следуюшие условия: '
