@@ -153,6 +153,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(Keys.ENTER)
         time.sleep(1)
         #
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        time.sleep(1)
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
         #
