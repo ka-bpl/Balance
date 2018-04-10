@@ -10,6 +10,8 @@ import requests
 import shutil
 
 ##
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # global
 browser = 'chrome'
 bv = '61'
