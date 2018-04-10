@@ -52,7 +52,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             "//div[@class='FmButtonClose__icon -wait-no FmButtonClose__icon--size-medium']").click()
         _ = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[@class='FmButtonLabel__wrap']")))
         driver.find_element_by_xpath("//div[@class='FmButtonLabel__wrap']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Все заявки')]]")))
+        wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Сбор документов')]]")))
         time.sleep(1)
 
     def test002_CorrectCreateRequest(self):
