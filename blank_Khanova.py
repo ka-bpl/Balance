@@ -26,11 +26,8 @@ driver = webdriver.Remote(
                 'trustAllSSLCertificates': True
             })
 
-
-staging = 'https://partnerka.project30.pro/'
-
 # global
-driver.get(staging)
+driver.get('https://partnerka.project30.pro/')
 driver.maximize_window()
 wait = WebDriverWait(driver, 500)
 
