@@ -170,7 +170,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59])  # Модель
         time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(Keys.RETURN)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(Keys.RETURN)
         #
         time.sleep(1)
         print('Выбраны следуюшие условия: '
