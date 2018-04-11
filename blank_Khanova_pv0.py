@@ -147,7 +147,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         # Информация об автосалоне и ТС
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys('1841' + Keys.ENTER)
         time.sleep(1)
-        driver.find_element_by_xpath("//*[text()[contains(.,'0-15')]]").click()
+        driver.find_element_by_xpath(
+            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description-no'])[1]").click()
         time.sleep(1)
         # Указать информацию из ПТС сейчас
         # TODO uncomment
