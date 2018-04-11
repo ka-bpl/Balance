@@ -35,7 +35,7 @@ countAZS = 2
 countCP = 2
 
 
-with open(r"/docs/Khanova/variable_Ka.txt") as file:
+with open(r"/docs/KhanovaPV0/variable_Ka.txt") as file:
     array = [row.strip() for row in file]
 
 
