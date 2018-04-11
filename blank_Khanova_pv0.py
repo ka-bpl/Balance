@@ -145,9 +145,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
         # Информация об автосалоне и ТС
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys('1841')
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys('1841' + Keys.ENTER)
         time.sleep(1)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Первый')]]").click()
+        driver.find_element_by_xpath("//*[text()[contains(.,'0-15')]]").click()
         time.sleep(1)
         # Указать информацию из ПТС сейчас
         # TODO uncomment
