@@ -169,6 +169,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(2.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Загрузить с телефона')]]")))
         driver.close()
+        driver.quit()
 
 
 if __name__ == '__main__':
