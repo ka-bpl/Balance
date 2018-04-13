@@ -10,7 +10,7 @@ import unittest
 ##
 # global
 browser = 'chrome'
-bv = '61'
+bv = 'last'
 ip = '10.30.30.6'
 driver = webdriver.Remote(
             command_executor='http://%s:4444/wd/hub' % ip,
