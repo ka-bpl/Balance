@@ -17,8 +17,8 @@ driver = webdriver.Remote(
             desired_capabilities={
                 'browserName': browser,
                 'version': bv,
-                'setJavascriptEnabled': True,
-                'trustAllSSLCertificates': True
+                'setJavascriptEnabled': True
+                #'trustAllSSLCertificates': True
             })
 
 driver.get('https://partnerka.project30.pro/')
