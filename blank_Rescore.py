@@ -9,16 +9,25 @@ import unittest
 import requests
 import shutil
 
+import urllib3
+urllib3.disable_warnings()
 
-predProd = 'https://testing-partnerka.project30.pro/'
+##
+# global
+browser = 'chrome'
+bv = '61'
+ip = '10.30.30.6'
+driver = webdriver.Remote(
+            command_executor='http://%s:4444/wd/hub' % ip,
+            desired_capabilities={
+                'browserName': browser,
+                'version': bv,
+                'setJavascriptEnabled': True,
+                'trustAllSSLCertificates': True
+            })
+
 staging = 'https://partnerka.project30.pro/'
 
-staging_ex = 'https://partnerka.project30.pro/request/create'
-
-predProdVer = 'https://verification-auto-testing.project30.pro/admin/'
-
-# global
-driver = webdriver.Chrome('/home/maxim/gecko/chromedriver')
 driver.get(staging)
 driver.maximize_window()
 wait = WebDriverWait(driver, 500)
@@ -28,7 +37,7 @@ countAZS = 2
 countCP = 2
 
 
-with open(r"/home/maxim/Документы/variable/Litvin/variable_Litvinenko.txt", encoding='utf-8') as file:
+with open(r"/docs/Litvin/variable_Litvinenko.txt") as file:
     array = [row.strip() for row in file]
 
 
