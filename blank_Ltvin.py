@@ -597,7 +597,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1.5)
         driver.find_element_by_xpath("//*[text()[contains(.,'Редактировать реквизиты')]]").click()
         time.sleep(2)
-        driver.find_element_by_xpath("(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]").click()
+        driver.find_element_by_xpath("(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[1]").click()
         time.sleep(6)
         global amouth
         _ = driver.find_element_by_class_name('PageRequestStep08__orderHeader').text
