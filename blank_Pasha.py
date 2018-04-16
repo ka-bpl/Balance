@@ -16,9 +16,9 @@ driver = webdriver.Remote(
             command_executor='http://%s:4444/wd/hub' % ip,
             desired_capabilities={
                 'browserName': browser,
-                'version': bv
-                #'setJavascriptEnabled': True
-                #'trustAllSSLCertificates': True
+                'version': bv,
+                'setJavascriptEnabled': True,
+                'trustAllSSLCertificates': True
             })
 
 driver.get('https://partnerka.project30.pro/')
