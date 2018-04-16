@@ -214,14 +214,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
     def test010_LetMeIn(self):
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.ID, 'username')))
-        driver.find_element_by_id('username').send_keys('user1')
-        driver.find_element_by_id('password').send_keys('bligDevvaik4' + Keys.RETURN)
+        driver.find_element_by_id('username').send_keys('User3')
+        driver.find_element_by_id('password').send_keys('12345' + Keys.RETURN)
         _ = wait.until(EC.element_to_be_clickable((By.NAME, "query")))
         driver.find_element_by_xpath("//SPAN[text()='Очередь задач']").click()
         time.sleep(1)
         try:
             if driver.find_element_by_xpath(
-                "(//A[@href='/admin/?action=show&entity=User&id=477200068&referer='][text()='Test1 Verification'][text()='Test1 Verification'])[1]"):
+                "(//A[@href='/admin/?action=show&entity=User&id=477200068&referer='][text()='Test3 Verification'][text()='Test1 Verification'])[1]"):
                     try:
                         global count
                         count = 0
