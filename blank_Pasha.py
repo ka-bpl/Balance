@@ -67,7 +67,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[9])      # код подразделения
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[63])      # место рождения
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[11])  # дата рождения
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[88])  # адрес проживания array[88]
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys("Москва Рязанский проспект 5 42")  # адрес проживания array[88]
         time.sleep(2)   # 3
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(Keys.ENTER)
         time.sleep(1)
