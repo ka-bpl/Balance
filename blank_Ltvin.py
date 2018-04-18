@@ -45,7 +45,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
     def test001_Login(self):
         wait.until(EC.element_to_be_clickable((By.NAME, 'login')))
         driver.find_element_by_name('login').send_keys('maxim.sidorkin@project30.pro')
-        driver.find_element_by_name('password').send_keys('@PYqLzi45'+Keys.RETURN)
+        driver.find_element_by_name('password').send_keys('@PYqL19455n@'+Keys.RETURN)  # @PYqL19455n@
         time.sleep(2)
         print('Проходим процедуру авторизации')
         wait.until(EC.element_to_be_clickable((By.XPATH,
