@@ -466,7 +466,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.close()
         driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//BUTTON[@class='FmButtonNext -disabled-no -active -focus-no -wait-no']")))
+        wait.until(EC.visibility_of_element_located(
+            (By.XPATH, "//DIV[@class='ForForm__BoxPage PageRequestStep07 PageRequestStep07--deviceMode-desktop ForForm__BoxPage--deviceMode-desktop']")))
         print('Сделка прошла первую верификацию и \nвернулась в партнёрку на выбор условий')
 
 
