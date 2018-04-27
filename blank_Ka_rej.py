@@ -228,7 +228,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print("Загружен ПТС")
         # загружаем водительское удостоверение
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            r'/docs/Khanova/Khanova/Dl2_Ka.png')
+            r'/docs/Khanova/Dl2_Ka.png')
         print("Загружено ВУ")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         try:
