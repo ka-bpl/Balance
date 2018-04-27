@@ -272,22 +272,22 @@ class Selenium1_test_Pilot(unittest.TestCase):
         except:
             print("Документы Индивидуальные условия не обнаружены")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/home/maxim/Документы/variable/Litvin/passportLi.pdf")    # passportIv.pdf PassFor6Step.pdf
+            "/docs/Litvin/passportLi.pdf")    # passportIv.pdf PassFor6Step.pdf
         print("Загружен скан паспорта")
         # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            r'/home/maxim/Документы/variable/Litvin/согласие_6шаг.pdf')
+            r'/docs/Litvin/согласие_6шаг.pdf')
         print("Загружено согласие на обработку персональных данных")
         # загружаем ПТС
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-             r'/home/maxim/Документы/variable/Litvin/ПТС_NissanJukeI.jpg')
+             r'/docs/Litvin/ПТС_NissanJukeI.jpg')
         print("Загружен ПТС")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-             r'/home/maxim/Документы/variable/Litvin/ПТС_NissanJukeI.jpg')
+             r'/docs/Litvin/ПТС_NissanJukeI.jpg')
         print("Загружен ПТС")
         # загружаем водительское удостоверение
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            r'/home/maxim/Документы/variable/Litvin/Dl2_Lit.jpg')
+            r'/docs/Litvin/Dl2_Lit.jpg')
         print("Загружено ВУ")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         try:
@@ -701,28 +701,28 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            "/home/maxim/Документы/variable/Litvin/фото_Литв.jpg"
+            "/docs/Litvin/фото_Литв.jpg"
         )  # Фотография заемщика
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/DKP.pdf"
+            "/docs/Litvin/DKP.pdf"
         )  # Договор купли-продажи ТС
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/КвитПВ.png"
+            "/docs/Litvin/КвитПВ.png"
         )  # Квитанция об оплате ПВ
         driver.find_element_by_xpath("(//INPUT[@type='file'])[5]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/СчётЗаТС.png"
+            "/docs/Litvin/СчётЗаТС.png"
         )  # Счёт на оплату ТС
         driver.find_element_by_xpath("(//INPUT[@type='file'])[6]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/СчётЗаСтраховку.png"
+            "/docs/Litvin/СчётЗаСтраховку.png"
         )  # Счёт на оплату КАСКО
         driver.find_element_by_xpath("(//INPUT[@type='file'])[7]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/СчётЗаСтраховку.png"
+            "/docs/Litvin/СчётЗаСтраховку.png"
         )  # Счёт на оплату Страхования Жизни
         driver.find_element_by_xpath("(//INPUT[@type='file'])[8]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/СчётЗаСтраховку.png"
+            "/docs/Litvin/СчётЗаСтраховку.png"
         )  # Счёт на оплату GAP Страхование
         driver.find_element_by_xpath("(//INPUT[@type='file'])[9]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/СчётЗаСтраховку.png"
+            "/docs/Litvin/СчётЗаСтраховку.png"
         )  # Счёт на оплату Дорожная Карта
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)

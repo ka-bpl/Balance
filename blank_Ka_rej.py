@@ -213,22 +213,22 @@ class Selenium1_test_Pilot(unittest.TestCase):
         except:
             print("Документы Индивидуальные условия не обнаружены")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/home/maxim/Документы/variable/Khanova/PassFor6Step.pdf")    # passportIv.pdf PassFor6Step.pdf
+            "/docs/Khanova/PassFor6Step.pdf")    # passportIv.pdf PassFor6Step.pdf
         print("Загружен скан паспорта")
         # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            r'/home/maxim/Документы/variable/Khanova/согласие_6шаг.pdf')
+            r'/docs/Khanova/согласие_6шаг.pdf')
         print("Загружено согласие на обработку персональных данных")
         # загружаем ПТС
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-             r'/home/maxim/Документы/variable/Khanova/ПТС_NissanJukeI.jpg')
+             r'/docs/Khanova/ПТС_NissanJukeI.jpg')
         print("Загружен ПТС")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-             r'/home/maxim/Документы/variable/Khanova/ПТС_NissanJukeI.jpg')
+             r'/docs/Khanova/ПТС_NissanJukeI.jpg')
         print("Загружен ПТС")
         # загружаем водительское удостоверение
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            r'/home/maxim/Документы/variable/Khanova/Dl2_Ka.png')
+            r'/docs/Khanova/Khanova/Dl2_Ka.png')
         print("Загружено ВУ")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         try:
