@@ -314,8 +314,58 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
 
     def test012_InputData(self):
-        Selenium1_test_Pilot.test016_PassportIssuer(self)
-        Selenium1_test_Pilot.test014_PassportAddress(self)
+        ### Issuer
+        time.sleep(1)
+        driver.find_element_by_name('query').clear()
+        time.sleep(1)
+        driver.find_element_by_name('query').send_keys(num + '18' + Keys.RETURN)
+        time.sleep(0.5)
+        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        time.sleep(0.5)
+        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(0.5)
+        wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Паспорт гражданина РФ')]]")))
+
+        driver.find_element_by_xpath("(//BUTTON[@class='Switch__left'])[1]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='Switch__right'])[2]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='Switch__right'])[3]").click()
+        driver.find_element_by_xpath("(//BUTTON[@class='Switch__left'])[4]").click()
+
+        print('Верифицируем кем выдан паспорт')
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        driver.close()
+        time.sleep(0.5)
+        driver.switch_to.window(driver.window_handles[-1])
+        ###
+
+        ### addres
+        time.sleep(0.5)
+        driver.find_element_by_name('query').clear()
+        time.sleep(1)
+        driver.find_element_by_name('query').send_keys(num + '17' + Keys.RETURN)
+        time.sleep(1)
+        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        time.sleep(1)
+        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(1.5)
+        wait.until(EC.visibility_of_element_located((By.XPATH,
+                                                     "//DIV[@class='FormHeader__caption'][text()='Паспорт гражданина РФ']")))
+
+        driver.find_element_by_id('addressFieldIsReadable--false').click()
+        driver.find_element_by_id('documentAddressHasNoCurrentResidencePermit--true').click()
+        driver.find_element_by_id('documentAddressHasNoStreetOrHouseOrFlat--true').click()
+
+        time.sleep(1.5)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
+        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
+        driver.close()
+        time.sleep(0.5)
+        driver.switch_to.window(driver.window_handles[-1])
+        ###
+
+        # Selenium1_test_Pilot.test016_PassportIssuer(self)
+        # Selenium1_test_Pilot.test014_PassportAddress(self)
 
     def test013_PassportFullName(self):
         time.sleep(1)
@@ -346,6 +396,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
+    @unittest.skip('SKIP')
     def test014_PassportAddress(self):
         time.sleep(0.5)
         driver.find_element_by_name('query').clear()
@@ -416,6 +467,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
+    @unittest.skip('SKIP')
     def test016_PassportIssuer(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
