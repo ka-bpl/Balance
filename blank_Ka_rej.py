@@ -521,6 +521,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.visibility_of_element_located(
             (By.XPATH, "//DIV[@class='ForForm__BoxPage PageRequestStep07 PageRequestStep07--deviceMode-desktop ForForm__BoxPage--deviceMode-desktop']")))
         print('Сделка прошла первую верификацию и \nвернулась в партнёрку на выбор условий')
+        driver.close()
+        driver.quit()
 
 
 if __name__ == '__main__':
