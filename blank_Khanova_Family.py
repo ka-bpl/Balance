@@ -34,6 +34,13 @@ countIU = 2
 countAZS = 2
 countCP = 2
 
+rolf = "//LABEL[@class='PageRequestStep05__productLabel -officialRolf -selected-no -declined-no -description-no']"
+step_pass_data = "//DIV[@class='ForForm__H1'][text()='Паспортные данные гражданина РФ']"
+step_work = "//DIV[@class='ForForm__H1'][text()='Основное место работы']"
+step_add_info = "//DIV[@class='ForForm__H1'][text()='Дополнительная информация']"
+step_credit_params = "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']"
+
+
 
 with open(r"/docs/KhanovaFamily/variable_Ka.txt") as file:
     array = [row.strip() for row in file]
@@ -42,8 +49,8 @@ with open(r"/docs/KhanovaFamily/variable_Ka.txt") as file:
 class Selenium1_test_Pilot(unittest.TestCase):
     def test001_Login(self):
         wait.until(EC.element_to_be_clickable((By.NAME, 'login')))
-        driver.find_element_by_name('login').send_keys('maxim.sidorkin@project30.pro')
-        driver.find_element_by_name('password').send_keys('@PYqL19455n@'+Keys.RETURN)
+        driver.find_element_by_name('login').send_keys(array[102]) # 102
+        driver.find_element_by_name('password').send_keys(array[104]+Keys.RETURN) # 104
         time.sleep(2)
         print('Проходим процедуру авторизации')
         wait.until(EC.element_to_be_clickable((By.XPATH,
@@ -65,8 +72,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test003_CorrectCreatePassportData(self):
         time.sleep(0.5)
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//DIV[@class='ForForm__H1'][text()='Паспортные данные гражданина РФ']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[5])  # серия и номер паспорта array[5]
+        wait.until(EC.visibility_of_element_located((By.XPATH, step_pass_data)))
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[5])  # серия и номер паспорта
         driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[7])  # дата выдачи
         driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[9])      # код подразделения
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[90])      # место рождения
@@ -94,7 +101,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
 
     def test005_CorrectCreateWork(self):
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//DIV[@class='ForForm__H1'][text()='Основное место работы']")))
+        wait.until(EC.visibility_of_element_located((By.XPATH, step_work)))
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[13]+Keys.ENTER)  # Форма занятости
         driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[15]+Keys.ENTER)            # Отрасль работодателя
         driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[17])                    # ИНН
@@ -119,7 +126,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print(' Заполняем поля корректно, и переходим к разделу "Дополнительная информация"')
 
     def test006_CorrectAddInfo(self):
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//DIV[@class='ForForm__H1'][text()='Дополнительная информация']")))
+        wait.until(EC.visibility_of_element_located((By.XPATH, step_add_info)))
         time.sleep(0.5)
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[33])     # Образование
         time.sleep(1)
@@ -137,63 +144,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test007_CorrectCreateCredit(self):
         time.sleep(0.5)
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
+        wait.until(EC.visibility_of_element_located((By.XPATH, step_credit_params)))
         driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys('250000')  # Первоначальный взнос, руб. [43]
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys('250000')  # Первоначальный взнос, руб.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
         # Информация об автосалоне и ТС
         driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys('1841' + Keys.ENTER)
         time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description'])[2]").click()
-        time.sleep(1)
-        # Указать информацию из ПТС сейчас
-        # TODO uncomment
-        driver.find_element_by_xpath("//*[text()[contains(.,'Указать информацию из ПТС сейчас')]]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").click()
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[49])
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(Keys.ENTER)
-        time.sleep(1)
-        #
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
-        #
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[53])  # Серия и номер ПТС
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[55])  # VIN автомобиля
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[57] + Keys.ENTER)  # Марка
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[59] + Keys.ENTER)  # Модель
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(Keys.RETURN)
-        #
-        time.sleep(1)
-        print('Выбраны следуюшие условия: '
-              'ТС -', array[57], array[59],
-              '\n VIN -', array[55], 'ПТС - ', array[53],
-              '\nАвто - ', array[51])
-        # Есть услуги страхования
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_xpath(
-            "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()  # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[92] + Keys.ENTER)  # 92
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("18000.33")  #
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath(
-                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит, добавляем вручную')
-        except:
-            print('Страховка входит в кредит "поумолчанию"')
-        # TODO uncomment
+        wait.until(EC.element_to_be_clickable((By.XPATH, rolf)))
+        driver.find_element_by_xpath(rolf).click()  #
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
@@ -209,29 +170,22 @@ class Selenium1_test_Pilot(unittest.TestCase):
         try:
             t = driver.find_element_by_xpath("//A[@class='FormAttachmentsTab__iconPrint']").get_attribute('href')
             filereq = requests.get(t, stream=True, verify=False)
-            with open(r"/docs/Khanova//" + 'согласие_6шаг' + ".pdf", "wb") as receive:
+            with open(r"/home/maxim/Документы/variable/Subbotina//" + 'согласие_6шаг' + ".pdf", "wb") as receive:
                 shutil.copyfileobj(filereq.raw, receive)
             del filereq
             print("Документы Индивидуальные условия загружены")
         except:
             print("Документы Индивидуальные условия не обнаружены")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/docs/Khanova/PassFor6Step.pdf")    # passportIv.pdf PassFor6Step.pdf
+            "/home/maxim/Документы/variable/Subbotina/PassFor6Step.pdf")    # passportIv.pdf PassFor6Step.pdf
         print("Загружен скан паспорта")
         # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            r'/docs/Khanova/согласие_6шаг.pdf')
+            r'/home/maxim/Документы/variable/Subbotina/согласие_6шаг.pdf')
         print("Загружено согласие на обработку персональных данных")
-        # загружаем ПТС
-        driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-             r'/docs/Khanova/ПТС_NissanJukeI.jpg')
-        print("Загружен ПТС")
-        driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-             r'/docs/Khanova/ПТС_NissanJukeI.jpg')
-        print("Загружен ПТС")
         # загружаем водительское удостоверение
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            r'/docs/Khanova/Dl2_Ka.png')
+            r'/home/maxim/Документы/variable/Subbotina/Dl2_Iv.jpg')
         print("Загружено ВУ")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         try:
@@ -249,39 +203,28 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
+        print(num)
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Отправить заявку в банк']").click()
 
     def test009_Verification(self):
         time.sleep(1)
-        driver.execute_script("window.open('https://verification-staging.project30.pro/admin/','_blank');")
+        driver.execute_script("window.open('https://10.30.0.41/admin/','_blank');")
         driver.switch_to.window(driver.window_handles[-1])
         print('Переходим в верификацию')
 
     def test010_LetMeIn(self):
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.ID, 'username')))
-        driver.find_element_by_id('username').send_keys('user2')
-        driver.find_element_by_id('password').send_keys('12345' + Keys.RETURN)
+        driver.find_element_by_id('username').send_keys(array[106])   # 106
+        driver.find_element_by_id('password').send_keys(array[108] + Keys.RETURN)   # 108
         _ = wait.until(EC.element_to_be_clickable((By.NAME, "query")))
         driver.find_element_by_xpath("//SPAN[text()='Очередь задач']").click()
         time.sleep(1)
-        try:
-            if driver.find_element_by_xpath(
-                "(//A[@href='/admin/?action=show&entity=User&id=477200069&referer='][text()='Test2 Verification'][text()='Test2 Verification'])[1]"):
-                    try:
-                        global count
-                        count = 0
-                        while driver.find_element_by_xpath("(//TD[@data-label='Проверяет'])[5]"):
-                            driver.find_element_by_xpath("(//A[@class='action-unassign'])[1]").click()
-                            count += 1
-                        else:
-                            print(' не найдено\n WHILE OFF')
-                    except:
-                        print(' Я проверял', count, "заявки")
-            elif print(' IF OFF'):
-                print('...')
-        except:
-            print("Я не проверяю ни одной заявки")
+        while driver.find_elements_by_xpath(
+                "//A[@href='/admin/?action=show&entity=User&id=477200057&referer='][text()='Сидоркин Максим']"):
+            driver.find_element_by_xpath("//I[@class='fa fa-times']").click()
+        else:
+            print('requests not found')
 
     def test011_PassportTag(self):
         try:
@@ -318,7 +261,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test012_InputData(self):
         Selenium1_test_Pilot.test016_PassportIssuer(self)
-        #Selenium1_test_Pilot.test014_PassportAddress(self)
 
     def test013_PassportFullName(self):
         time.sleep(1)
@@ -502,104 +444,15 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test022_Pts(self):
         time.sleep(0.5)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '04' + Keys.RETURN)
-        time.sleep(1)
-        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
-            time.sleep(1)
-            driver.find_element_by_name('query').send_keys(Keys.RETURN)
-        else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(0.5)
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        try:
-            driver.find_element_by_id('inputVehiclePassportSeriesNumber').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('inputVehiclePassportSeriesNumber').send_keys(array[53])  # Серия и номер ПТС
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('vin').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('vin').send_keys(array[55])  # VIN
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('brand').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('brand').send_keys(array[57])  # Марка array[57]
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('model').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('model').send_keys(array[59])  # Модель array[59]
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('year').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('year').send_keys('2018')  # Год выпуска
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('enginePower').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('enginePower').send_keys(array[69])  # Мощность
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_id('engineCapacity').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('engineCapacity').send_keys(array[67])  # Объем двигателя, см³
-        except:
-            print('Second check of PTS')
-        try:
-            driver.find_element_by_xpath("(//BUTTON[@class='Selector__item'])[1]").click()
-            #driver.find_element_by_id('engineType--gasoline').click()  # Тип двигателя
-        except:
-            print('Second check of PTS')
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[2]").click()
-        driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[4]").click()
-        time.sleep(1)
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_id('issuedAt').click()
-            time.sleep(0.5)
-            driver.find_element_by_id('issuedAt').send_keys('31122017')
-        except:
-            print('Это не ГОСПРОГРАММА')
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
-        driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
-
-        try:
-            time.sleep(2)
-            driver.find_element_by_xpath("//DIV[@class='Wait__message-text'][text()='Все документы проверены']")
-            print('Все документы проверены (ПТС)')
-        except:
-            print('ОШИБКА!')
-        print('Верифицируем ПТС')
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
 
     def test023_SecondCheckPts(self):
-        Selenium1_test_Pilot.test022_Pts(self)
+        time.sleep(0.5)
 
     def test024_See_chooseDealCondition(self):
         time.sleep(0.5)
         driver.close()
         driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonNext__icon']")))
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonNext__wrap'][text()='Указать ТС']")))
         print('Сделка прошла первую верификацию и \nвернулась в партнёрку на выбор условий')
         driver.close()
         driver.quit()
