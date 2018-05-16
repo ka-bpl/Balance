@@ -221,7 +221,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//SPAN[text()='Очередь задач']").click()
         time.sleep(1)
         while driver.find_elements_by_xpath(
-                "//A[@href='/admin/?action=show&entity=User&id=477200057&referer='][text()='Сидоркин Максим']"):
+                "//A[@href='/admin/?action=show&entity=User&id=477200088&referer='][text()='VerificationTestUser5 VerificationTestUser5']"):
             driver.find_element_by_xpath("//I[@class='fa fa-times']").click()
         else:
             print('requests not found')
