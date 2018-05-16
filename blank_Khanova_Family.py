@@ -170,22 +170,22 @@ class Selenium1_test_Pilot(unittest.TestCase):
         try:
             t = driver.find_element_by_xpath("//A[@class='FormAttachmentsTab__iconPrint']").get_attribute('href')
             filereq = requests.get(t, stream=True, verify=False)
-            with open(r"/home/maxim/Документы/variable/Subbotina//" + 'согласие_6шаг' + ".pdf", "wb") as receive:
+            with open(r"/docs/Khanova//" + 'согласие_6шаг' + ".pdf", "wb") as receive:
                 shutil.copyfileobj(filereq.raw, receive)
             del filereq
             print("Документы Индивидуальные условия загружены")
         except:
             print("Документы Индивидуальные условия не обнаружены")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/home/maxim/Документы/variable/Subbotina/PassFor6Step.pdf")    # passportIv.pdf PassFor6Step.pdf
+            "/docs/Khanova/PassFor6Step.pdf")
         print("Загружен скан паспорта")
         # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            r'/home/maxim/Документы/variable/Subbotina/согласие_6шаг.pdf')
+            r'/docs/Khanova/согласие_6шаг.pdf')
         print("Загружено согласие на обработку персональных данных")
         # загружаем водительское удостоверение
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            r'/home/maxim/Документы/variable/Subbotina/Dl2_Iv.jpg')
+            r'/docs/Khanova/Dl2_Ka.png')
         print("Загружено ВУ")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         try:
