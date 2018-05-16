@@ -248,7 +248,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test009_Verification(self):
         time.sleep(1)
-        driver.execute_script("window.open('https://verification-staging.project30.pro/admin/','_blank');")
+        driver.execute_script("window.open('https://10.30.0.41/admin/','_blank');")
         driver.switch_to.window(driver.window_handles[-1])
         print('Переходим в верификацию')
 
