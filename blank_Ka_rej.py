@@ -322,11 +322,11 @@ class Selenium1_test_Pilot(unittest.TestCase):
         ### Issuer
         time.sleep(1)
         driver.find_element_by_name('query').clear()
-        time.sleep(1)
+        time.sleep(3)
         driver.find_element_by_name('query').send_keys(num + '18' + Keys.RETURN)
         time.sleep(0.5)
 
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+        # wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
         driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
         driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
