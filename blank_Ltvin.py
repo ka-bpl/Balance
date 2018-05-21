@@ -281,14 +281,19 @@ class Selenium1_test_Pilot(unittest.TestCase):
         try:
             driver.find_element_by_name('query').send_keys(num+'15' + Keys.RETURN)
             time.sleep(1.5)
-            string = driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]")
+            string = driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]")
         except:
             self.fail(print('Element not found'))
 
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
+        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
+            'Test1' + Keys.ENTER)
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1)
+        time.sleep(2)
+
         wait.until(EC.element_to_be_clickable((By.ID, "INPUT_PASSPORT_SERIES_NUMBER")))
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
@@ -381,10 +386,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
         else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-            print('Нашел и вышел из цикла')
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
+            wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+            driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
+            wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
+            driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
+                'Test1' + Keys.ENTER)
+            time.sleep(1)
+            driver.switch_to.window(driver.window_handles[-1])
+            time.sleep(2)
+
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//BUTTON[@class='ThumbnailView__item'])[1]")))
         driver.find_element_by_xpath("(//BUTTON[@class='ThumbnailView__item'])[1]").click()
@@ -471,9 +483,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test021_call_accept(self):
         time.sleep(0.5)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
+        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
+            'Test1' + Keys.ENTER)
+        time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1.5)
+        time.sleep(2)
 
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
@@ -498,9 +515,15 @@ class Selenium1_test_Pilot(unittest.TestCase):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
         else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
+            wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+            driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
+            wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
+            driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
+                'Test1' + Keys.ENTER)
+            time.sleep(1)
+            driver.switch_to.window(driver.window_handles[-1])
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__right')))
         for element in driver.find_elements_by_class_name('Switch__right'):
