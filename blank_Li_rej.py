@@ -552,8 +552,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(2)
-        for element in driver.find_elements_by_class_name('Switch__right'):
-            element.click()
         time.sleep(0.5)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
@@ -642,7 +640,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[2]").click()
         driver.find_element_by_xpath("(//DIV[@class='RadioButton__check'])[4]").click()
         time.sleep(2)
-
+        for element in driver.find_elements_by_class_name('Switch__right'):
+            element.click()
+        time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
 
