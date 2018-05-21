@@ -282,7 +282,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         try:
             driver.find_element_by_name('query').send_keys(num+'15' + Keys.RETURN)
             time.sleep(1.5)
-            string = driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]")
+            string = driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]")
         except:
             self.fail(print('Element not found'))
 
