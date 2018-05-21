@@ -268,6 +268,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         Selenium1_test_Pilot.test016_PassportIssuer(self)
 
     def test013_PassportFullName(self):
+        wait = WebDriverWait(driver, 5)
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(0.5)
