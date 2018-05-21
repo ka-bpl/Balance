@@ -290,7 +290,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
         driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'Максим' + Keys.ENTER)
+            'Test2' + Keys.ENTER)
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(2)
@@ -331,7 +331,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
             wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
             driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-                'Максим' + Keys.ENTER)
+                'Test2' + Keys.ENTER)
             time.sleep(1)
             driver.switch_to.window(driver.window_handles[-1])
             time.sleep(2)
@@ -521,7 +521,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
             wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
             driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-                'Максим' + Keys.ENTER)
+                'Test2' + Keys.ENTER)
             time.sleep(1)
             driver.switch_to.window(driver.window_handles[-1])
             time.sleep(2)
