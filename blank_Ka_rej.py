@@ -528,8 +528,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
 
     def test017_Consent(self):
+        time.sleep(1)
         driver.find_element_by_name('query').clear()
-        time.sleep(0.5)
+        time.sleep(1.5)
         driver.find_element_by_name('query').send_keys(num + '20' + Keys.RETURN)
 
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
