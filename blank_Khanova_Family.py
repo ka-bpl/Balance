@@ -391,7 +391,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait = WebDriverWait(driver, 5)
 
         driver.find_element_by_name('query').clear()
-        time.sleep(0.5)
+        time.sleep(1.5)
         driver.find_element_by_name('query').send_keys(num + '20' + Keys.RETURN)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
@@ -408,7 +408,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         Selenium1_test_Pilot.test013_PassportFullName(self)
 
     def test019_DL(self):
-        time.sleep(0.5)
+        time.sleep(1.5)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '03' + Keys.RETURN)
@@ -426,9 +426,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print('Верифицируем водительское удостоверение')
 
     def test020_call(self):
-        time.sleep(0.5)
+        time.sleep(1.5)
         driver.find_element_by_name('query').clear()
-        time.sleep(0.5)
+        time.sleep(1.5)
         driver.find_element_by_name('query').send_keys(num + Keys.RETURN)
         time.sleep(1)
         while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
