@@ -129,7 +129,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH,
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)
+        # driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)
         time.sleep(1)
         driver.find_element_by_xpath(
             "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description'])[1]").click()
