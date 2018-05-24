@@ -131,8 +131,8 @@ class Selenium1_test_Pilot(unittest.TestCase):
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
         # driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)
         time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description'])[1]").click()
+        # driver.find_element_by_xpath(
+        #     "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description'])[1]").click()
         driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
