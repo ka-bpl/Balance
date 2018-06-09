@@ -36,6 +36,12 @@ countIU = 2
 countAZS = 2
 countCP = 2
 
+rolf = "//LABEL[@class='PageRequestStep05__productLabel -officialRolf -selected-no -declined-no -description-no']"
+step_pass_data = "//DIV[@class='ForForm__H1'][text()='Паспортные данные гражданина РФ']"
+step_work = "//DIV[@class='ForForm__H1'][text()='Основное место работы']"
+step_add_info = "//DIV[@class='ForForm__H1'][text()='Дополнительная информация']"
+step_credit_params = "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']"
+
 
 with open(r"/docs/Litvin/variable_Litvinenko.txt") as file:
     array = [row.strip() for row in file]
@@ -44,8 +50,8 @@ with open(r"/docs/Litvin/variable_Litvinenko.txt") as file:
 class Selenium1_test_Pilot(unittest.TestCase):
     def test001_Login(self):
         wait.until(EC.element_to_be_clickable((By.NAME, 'login')))
-        driver.find_element_by_name('login').send_keys('maxim.sidorkin@project30.pro')
-        driver.find_element_by_name('password').send_keys('@PYqL19455n@'+Keys.RETURN)
+        driver.find_element_by_name('login').send_keys(array[114])
+        driver.find_element_by_name('password').send_keys(array[116]+Keys.RETURN)
         time.sleep(2)
         print('Проходим процедуру авторизации')
         wait.until(EC.element_to_be_clickable((By.XPATH,
@@ -141,23 +147,43 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH,
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[49] + Keys.ENTER)
-        time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description-no'])[2]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
+        time.sleep(0.5)
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys('350000')  # Стоимость ТС, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys('250000')  # Первоначальный взнос, руб.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys('24')  # Срок кредита, мес.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        # Информация об автосалоне и ТС
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys('1841' + Keys.ENTER)
         time.sleep(1)
+        wait.until(EC.element_to_be_clickable((By.XPATH, rolf)))
+        driver.find_element_by_xpath(rolf).click()  #
+        time.sleep(1)
+
+        driver.find_element_by_xpath("//*[text()[contains(.,'Указать информацию из ПТС сейчас')]]").click()
+        time.sleep(1)
+        # driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").click()
+        # driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[49])
+        # time.sleep(1)
+        # driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(Keys.ENTER)
+        # time.sleep(1)
+        #
+        # driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
+        # driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
+        #
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[120])  # Серия и номер ПТС
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[182])  # VIN автомобиля
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[122] + Keys.ENTER)  # Марка
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[124] + Keys.ENTER)  # Модель
+        #
+        time.sleep(1)
+
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
         driver.find_element_by_class_name('FmButtonNext__icon').click()
         print('Выбран тип страховки:', array[92])
         print(' Заполняем поля корректно, и переходим к разделу "Сбор документов"')
+
 
     def test008_UploadDocs(self):
         # загружаем документы
