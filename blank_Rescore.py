@@ -172,7 +172,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         # driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
         #
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[120])  # Серия и номер ПТС
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[182])  # VIN автомобиля
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[118])  # VIN автомобиля
         driver.find_element_by_xpath("(//INPUT[@type='text'])[8]").send_keys(array[122] + Keys.ENTER)  # Марка
         driver.find_element_by_xpath("(//INPUT[@type='text'])[9]").send_keys(array[124] + Keys.ENTER)  # Модель
         #
