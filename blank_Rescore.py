@@ -650,9 +650,12 @@ class Selenium1_test_Pilot(unittest.TestCase):
         for element in driver.find_elements_by_class_name('Switch__right'):
             element.click()
         time.sleep(0.5)
-        driver.find_element_by_id('issuedAt').click()
-        time.sleep(0.5)
-        driver.find_element_by_id('issuedAt').send_keys('31122017')
+        try:
+            driver.find_element_by_id('issuedAt').click()
+            time.sleep(0.5)
+            driver.find_element_by_id('issuedAt').send_keys('31122017')
+        except:
+            print('не вводим дату')
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
         driver.find_element_by_xpath("//SPAN[@class='Button__label'][text()='Готово']").click()
         wait.until(EC.visibility_of_element_located((By.XPATH, "//*[text()[contains(.,'Все документы проверены')]]")))
