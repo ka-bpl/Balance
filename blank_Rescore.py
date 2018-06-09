@@ -664,18 +664,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
-    @unittest.skip('wait')
     def test027_SecondPTS(self):
         Selenium1_test_Pilot.test026_PTS(self)
 
-    @unittest.skip('wait')
     def test028_backToPart(self):
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.visibility_of_element_located(
-            (By.XPATH, "//DIV[@class='PageRequestStep07__productName'][text()='Продукт: Госпрограмма «Первый»']")))
-        print("Возвращаемся в партнёрку и ожидаем расчёта лимитов")
+        driver.quit()
 
 
 if __name__ == '__main__':
