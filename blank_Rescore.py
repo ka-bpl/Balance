@@ -162,14 +162,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
         driver.find_element_by_xpath("//*[text()[contains(.,'Указать информацию из ПТС сейчас')]]").click()
         time.sleep(1)
-        # driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").click()
-        # driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[49])
-        # time.sleep(1)
-        # driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(Keys.ENTER)
-        # time.sleep(1)
-        #
-        # driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").click()
-        # driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[51] + Keys.ENTER)  # Б/У
         #
         driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys(array[120])  # Серия и номер ПТС
         driver.find_element_by_xpath("(//INPUT[@type='text'])[7]").send_keys(array[118])  # VIN автомобиля
@@ -187,6 +179,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
 
     def test008_UploadDocs(self):
         # загружаем документы
+
         time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Загрузить с телефона')]]")))
         ####
@@ -200,15 +193,22 @@ class Selenium1_test_Pilot(unittest.TestCase):
         except:
             print("Документы Индивидуальные условия не обнаружены")
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/home/maxim/Документы/variable/Litvin/passportLi.pdf")    # passportIv.pdf PassFor6Step.pdf
+            "/docs/Litvin/passportLi.pdf")    # passportIv.pdf PassFor6Step.pdf
         print("Загружен скан паспорта")
         # загружаем скан согласия на обработку персональных данных
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            r'/home/maxim/Документы/variable/Litvin/согласие_6шаг.pdf')
+            r'/docs/Litvin/согласие_6шаг.pdf')
         print("Загружено согласие на обработку персональных данных")
+        # загружаем ПТС
+        driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
+             r'/docs/Litvin/ПТС_NissanJukeI.jpg')
+        print("Загружен ПТС")
+        driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
+             r'/docs/Litvin/ПТС_NissanJukeI.jpg')
+        print("Загружен ПТС")
         # загружаем водительское удостоверение
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            r'/home/maxim/Документы/variable/Litvin/Dl2_Lit.jpg')
+            r'/docs/Litvin/Dl2_Lit.jpg')
         print("Загружено ВУ")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         try:
@@ -220,7 +220,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print('Извлекаем номер заявки')
         draw = driver.find_element_by_xpath("//*[text()[contains(.,'Заявка №')]]").text
         global num
-        num = draw[8:13]    # 14 = Pp / 13 = St
+        num = draw[8:13]
         # отправляем заявку в банк
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
@@ -240,14 +240,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
     def test010_LetMeIn(self):
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.ID, 'username')))
-        driver.find_element_by_id('username').send_keys('User3')
-        driver.find_element_by_id('password').send_keys('12345' + Keys.RETURN)
+        driver.find_element_by_id('username').send_keys(array[126])
+        driver.find_element_by_id('password').send_keys('12345678' + Keys.RETURN)
         _ = wait.until(EC.element_to_be_clickable((By.NAME, "query")))
         driver.find_element_by_xpath("//SPAN[text()='Очередь задач']").click()
         time.sleep(1)
         try:
             if driver.find_element_by_xpath(
-                "(//A[@href='/admin/?action=show&entity=User&id=477200068&referer='][text()='Test3 Verification'][text()='Test1 Verification'])[1]"):
+                "(//A[@href='/admin/?action=show&entity=User&id=477200068&referer='][text()='VerificationTestUser4 VerificationTestUser4'][text()='VerificationTestUser4 VerificationTestUser4'])[1]"):
                     try:
                         global count
                         count = 0
@@ -368,10 +368,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
         else:
-            driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
-            print('Нашел и вышел из цикла')
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
+            wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+            driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
+            wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
+            driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
+                'User4' + Keys.ENTER)
+            time.sleep(1)
+            driver.switch_to.window(driver.window_handles[-1])
+            time.sleep(2)
+
+        # time.sleep(1)
+        # driver.switch_to.window(driver.window_handles[-1])
         time.sleep(0.5)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//BUTTON[@class='ThumbnailView__item'])[1]")))
         driver.find_element_by_xpath("(//BUTTON[@class='ThumbnailView__item'])[1]").click()
@@ -478,6 +485,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1.5)
         print('Верифицируем звонок')
 
+    @unittest.skip('wait')
     def test022_backToPart(self):
         driver.close()
         time.sleep(0.5)
@@ -503,6 +511,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print("Повторно отправляем заявку на скоринг")
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Отправить заявку в банк']").click()
 
+    @unittest.skip('wait')
     def test023_NoName(self):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located(
@@ -536,6 +545,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print("Переходим на 5ый шаг и указываем ТС")
         driver.find_element_by_class_name('FmButtonNext__icon').click()
 
+    @unittest.skip('wait')
     def test024_Choose_deal_condition(self):
         # загружаем ПТС
         time.sleep(0.5)
@@ -551,6 +561,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Отправить заявку в банк']").click()
 
+    @unittest.skip('wait')
     def test025_Verification(self):
         time.sleep(1)
         driver.execute_script(
@@ -558,6 +569,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
         print('Переходим в верификацию')
 
+    @unittest.skip('wait')
     def test026_PTS(self):
         time.sleep(0.5)
         driver.find_element_by_name('query').clear()
@@ -641,9 +653,11 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
 
+    @unittest.skip('wait')
     def test027_SecondPTS(self):
         Selenium1_test_Pilot.test026_PTS(self)
 
+    @unittest.skip('wait')
     def test028_backToPart(self):
         driver.close()
         time.sleep(0.5)
