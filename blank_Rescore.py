@@ -574,7 +574,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.window(driver.window_handles[-1])
         print('Переходим в верификацию')
 
-    @unittest.skip('wait')
     def test026_PTS(self):
         time.sleep(0.5)
         driver.find_element_by_name('query').clear()
@@ -596,43 +595,43 @@ class Selenium1_test_Pilot(unittest.TestCase):
         try:
             driver.find_element_by_id('inputVehiclePassportSeriesNumber').click()
             time.sleep(0.5)
-            driver.find_element_by_id('inputVehiclePassportSeriesNumber').send_keys(array[53])  # Серия и номер ПТС
+            driver.find_element_by_id('inputVehiclePassportSeriesNumber').send_keys(array[120])  # Серия и номер ПТС
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('vin').click()
             time.sleep(0.5)
-            driver.find_element_by_id('vin').send_keys(array[55])  # VIN
+            driver.find_element_by_id('vin').send_keys(array[118])  # VIN
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('brand').click()
             time.sleep(0.5)
-            driver.find_element_by_id('brand').send_keys(array[57])  # Марка array[57]
+            driver.find_element_by_id('brand').send_keys(array[122])  # Марка array[57]
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('model').click()
             time.sleep(0.5)
-            driver.find_element_by_id('model').send_keys(array[59])  # Модель array[59]
+            driver.find_element_by_id('model').send_keys(array[124])  # Модель array[59]
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('year').click()
             time.sleep(0.5)
-            driver.find_element_by_id('year').send_keys('2017')  # Год выпуска
+            driver.find_element_by_id('year').send_keys('2013')  # Год выпуска
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('enginePower').click()
             time.sleep(0.5)
-            driver.find_element_by_id('enginePower').send_keys(array[69])  # Мощность
+            driver.find_element_by_id('enginePower').send_keys('60')  # Мощность
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('engineCapacity').click()
             time.sleep(0.5)
-            driver.find_element_by_id('engineCapacity').send_keys(array[67])  # Объем двигателя, см³
+            driver.find_element_by_id('engineCapacity').send_keys('1600')  # Объем двигателя, см³
         except:
             print('Second check of PTS')
         try:
