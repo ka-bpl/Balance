@@ -281,7 +281,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(2)
 
         # первый скан
-        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])  # array[5]
+        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[132])  # array[5]
         time.sleep(0.5)
         driver.find_element_by_id('firstSpread').click()
 
