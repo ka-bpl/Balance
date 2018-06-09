@@ -21,7 +21,7 @@ driver = webdriver.Remote(
                 'trustAllSSLCertificates': True
             })
 
-driver.get('https://testing-partnerka.project30.pro/')
+driver.get('https://partnerka.project30.pro/')
 driver.maximize_window()
 wait = WebDriverWait(driver, 500)
 
@@ -37,8 +37,8 @@ with open(r"/docs/Pasha/variable_Pasha.txt") as file:
 class Selenium1_test_Pilot(unittest.TestCase):
     def test001_Login(self):
         wait.until(EC.element_to_be_clickable((By.NAME, 'login')))
-        driver.find_element_by_name('login').send_keys('margarita.grigoryan@project30.pro')
-        driver.find_element_by_name('password').send_keys('Secret1'+Keys.RETURN)
+        driver.find_element_by_name('login').send_keys('maxim.sidorkin@project30.pro')
+        driver.find_element_by_name('password').send_keys('@PYqL19455n@'+Keys.RETURN)
         time.sleep(2)
         print('Проходим процедуру авторизации')
         wait.until(EC.element_to_be_clickable((By.XPATH,
