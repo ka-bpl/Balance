@@ -465,13 +465,17 @@ class Selenium1_test_Pilot(unittest.TestCase):
             time.sleep(1)
             driver.find_element_by_name('query').send_keys(Keys.RETURN)
         time.sleep(1.5)
-        print("Ожидаем поступление звонка")
 
     def test021_call_accept(self):
         time.sleep(0.5)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Взять себе')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
+        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
+        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
+            'User4' + Keys.ENTER)
+        time.sleep(1)
         driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(1.5)
+        time.sleep(2)
 
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//SPAN[@class='Button__label'][text()='Готово']")))
