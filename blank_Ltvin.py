@@ -146,6 +146,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
+        driver.find_element_by_xpath(
+            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description-no'])[1]").click()
+        time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
         # TODO uncomment
