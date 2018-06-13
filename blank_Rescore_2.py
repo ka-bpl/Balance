@@ -788,7 +788,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.close()
         time.sleep(2)
         driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@type='file'])[1]")))
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//DIV[@class='FmButtonLabel__wrap'])[2]")))
 
     def test035_BeginDownloadDocs(self):
         driver.find_element_by_xpath("(//DIV[@class='FmButtonLabel__wrap'])[2]").click()
