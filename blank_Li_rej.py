@@ -146,6 +146,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
+        driver.find_element_by_xpath(
+            "(//LABEL[@class='PageRequestStep05__productLabel  -selected-no -declined-no -description-no'])[1]").click()
+        time.sleep(1)
         # Информация об автосалоне и ТС
         # Указать информацию из ПТС сейчас
         # TODO uncomment
@@ -176,85 +179,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         # Есть услуги страхования
         time.sleep(0.5)
-        driver.find_element_by_xpath(
-            "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").click()  # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[10]").send_keys(array[110] + Keys.ENTER)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[11]").send_keys("150.50")  #
-        time.sleep(0.5)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath(
-                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит. Добавляем вручную.')
-        except:
-            print('Страховка БЛАГОСОСТОЯНИЕ СЖ (+ФинРиск) обязательно входит в кредит')
-        driver.find_element_by_xpath("//*[text()[contains(.,'Добавить услугу страхования')]]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[12]").click()  # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[12]").send_keys(array[92] + Keys.ENTER)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[13]").send_keys("150.50")  #
-        time.sleep(0.5)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath(
-                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит. Добавляем вручную.')
-        except:
-            print('Страховка БЛАГОСОСТОЯНИЕ СЖ (+ФинРиск) обязательно входит в кредит')
-        time.sleep(0.5)
-        driver.find_element_by_xpath("//*[text()[contains(.,'Добавить услугу страхования')]]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[14]").click()  # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[14]").send_keys(array[94] + Keys.ENTER)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[15]").send_keys("150.50")  #
-        time.sleep(0.5)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath(
-                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит. Добавляем вручную.')
-        except:
-            print('Страховка БЛАГОСОСТОЯНИЕ СЖ (+ФинРиск) обязательно входит в кредит')
-        driver.find_element_by_xpath("//*[text()[contains(.,'Добавить услугу страхования')]]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[16]").click()  # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[16]").send_keys(array[112] + Keys.ENTER)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[17]").send_keys("150.50")  #
-        time.sleep(0.5)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath(
-                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит. Добавляем вручную.')
-        except:
-            print('Страховка БЛАГОСОСТОЯНИЕ СЖ (+ФинРиск) обязательно входит в кредит')
-        driver.find_element_by_xpath("//*[text()[contains(.,'Добавить услугу страхования')]]").click()
-        time.sleep(1)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[18]").click()  # Тип страхования
-        time.sleep(0.5)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[18]").send_keys(array[98] + Keys.ENTER)
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[19]").send_keys("150.50")  #
-        time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
-        try:
-            driver.find_element_by_xpath(
-                "//DIV[@class='FmSwitch__text  -disabled-no -active-no -focus-no -check-no -wait-no'][text()='Нет']").click()
-            print('Страховка не входит в кредит. Добавляем вручную.')
-        except:
-            print('Страховка БЛАГОСОСТОЯНИЕ СЖ (+ФинРиск) обязательно входит в кредит')
         driver.find_element_by_class_name('FmButtonNext__icon').click()
-        print('Выбран тип страховки:', array[92])
         print(' Заполняем поля корректно, и переходим к разделу "Сбор документов"')
 
     def test008_UploadDocs(self):
@@ -672,10 +597,10 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonLabel__wrap")))
         driver.find_element_by_xpath(
             "(//DIV[@class='FmButtonRadio__icon -disabled-no -checked-no -focus-no'])[2]").click()
-        driver.save_screenshot(r'/home/maxim/Документы/variable/screenShots/test023.png')
         driver.find_element_by_class_name('FmButtonNext__wrap').click()
         print('Переходим в раздел 7. Выбор условий, выбираем оно из условий и нажимаем ДАЛЕЕ >')
 
+    @unittest.skip('...')
     def test025_DealState_Ins1(self):
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Редактировать реквизиты')]]")))
         time.sleep(1.5)
@@ -687,6 +612,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
         #
 
+    @unittest.skip('...')
     def test026_DealState_Ins2(self):
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
@@ -698,6 +624,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(
             EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
 
+    @unittest.skip('...')
     def test027_DealState_Ins3(self):
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
@@ -709,6 +636,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(
             EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
 
+    @unittest.skip('...')
     def test028_DealState_Ins4(self):
         time.sleep(1)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
@@ -738,18 +666,19 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='file'])[5]").send_keys(
             "/docs/Litvin/СчётЗаТС.png"
         )  # Счёт на оплату ТС
-        driver.find_element_by_xpath("(//INPUT[@type='file'])[6]").send_keys(
-            "/docs/Litvin/СчётЗаСтраховку.png"
-        )  # Счёт на оплату КАСКО
-        driver.find_element_by_xpath("(//INPUT[@type='file'])[7]").send_keys(
-            "/docs/Litvin/СчётЗаСтраховку.png"
-        )  # Счёт на оплату Страхования Жизни
-        driver.find_element_by_xpath("(//INPUT[@type='file'])[8]").send_keys(
-            "/docs/Litvin/СчётЗаСтраховку.png"
-        )  # Счёт на оплату GAP Страхование
-        driver.find_element_by_xpath("(//INPUT[@type='file'])[9]").send_keys(
-            "/docs/Litvin/СчётЗаСтраховку.png"
-        )  # Счёт на оплату Дорожная Карта
+
+        # driver.find_element_by_xpath("(//INPUT[@type='file'])[6]").send_keys(
+        #     "/docs/Litvin/СчётЗаСтраховку.png"
+        # )  # Счёт на оплату КАСКО
+        # driver.find_element_by_xpath("(//INPUT[@type='file'])[7]").send_keys(
+        #     "/docs/Litvin/СчётЗаСтраховку.png"
+        # )  # Счёт на оплату Страхования Жизни
+        # driver.find_element_by_xpath("(//INPUT[@type='file'])[8]").send_keys(
+        #     "/docs/Litvin/СчётЗаСтраховку.png"
+        # )  # Счёт на оплату GAP Страхование
+        # driver.find_element_by_xpath("(//INPUT[@type='file'])[9]").send_keys(
+        #     "/docs/Litvin/СчётЗаСтраховку.png"
+        # )  # Счёт на оплату Дорожная Карта
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.75)
@@ -764,241 +693,82 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.NAME, "query")))
 
     def test031_PhotoReject(self):
-        time.sleep(0.5)
+        time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '21' + Keys.RETURN)
+        while driver.find_elements_by_xpath("//*[text()[contains(.,'Ничего не найдено')]]"):
+            time.sleep(1)
+            driver.find_element_by_name('query').send_keys(Keys.RETURN)
         time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.element_to_be_clickable((By.ID, 'photoMatch--true')))
-        driver.find_element_by_id('photoMatch--true').click()
-        driver.find_element_by_id('photoFromCarShowroom--false').click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+        print('Сверка фото ')
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        driver.switch_to.alert.accept()
+        time.sleep(0.5)
 
     def test032_DKPReject(self):
-        time.sleep(0.5)
+        time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '23' + Keys.RETURN)
-        time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__left')))
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        time.sleep(1)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+        print("Проверка ДКП")
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
+        time.sleep(0.5)
+        driver.switch_to.alert.accept()
+        time.sleep(0.5)
 
     def test033_FirstPayReject(self):
-        time.sleep(0.5)
+        time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '24' + Keys.RETURN)
-        time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'Switch__left')))
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
+        time.sleep(1.5)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+        print('Проверка Квитанции ПВ')
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        driver.switch_to.alert.accept()
+        time.sleep(0.5)
 
+    @unittest.skip('...')
     def test034_InsLifeReject(self):
         time.sleep(0.5)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '25' + Keys.RETURN)
-        time.sleep(1)
 
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='FormHeader__caption'][text()='Счёт на оплату']")))
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-    # here
+    @unittest.skip('...')
     def test035_KASKOReject(self):
         time.sleep(0.5)
+
+    @unittest.skip('...')
+    def test036_RoadMapReject(self):
+        time.sleep(0.5)
+
+    def test037_PayTS(self):
+        time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
         driver.find_element_by_name('query').send_keys(num + '26' + Keys.RETURN)
-        time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='FormHeader__caption'][text()='Счёт на оплату']")))
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-
-    def test036_RoadMapReject(self):
+        time.sleep(1)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
+        print("Проверка Счёта на оплату ТС")
+        driver.find_element_by_xpath("(//I[@class='fa fa-check-square'])[1]").click()
         time.sleep(0.5)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '27' + Keys.RETURN)
-        time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='FormHeader__caption'][text()='Счёт на оплату']")))
-
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
+        driver.switch_to.alert.accept()
         time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
 
-    def test037_GAPReject(self):
+    def test038_PayTS(self):
         time.sleep(0.5)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '28' + Keys.RETURN)
-        time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='FormHeader__caption'][text()='Счёт на оплату']")))
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
-
-    def test038_PayTSReject(self):
-        time.sleep(0.5)
-        driver.find_element_by_name('query').clear()
-        time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '29' + Keys.RETURN)
-        time.sleep(1)
-
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Назначить')]]")))
-        driver.find_element_by_xpath("//*[text()[contains(.,'Назначить')]]").click()
-        wait.until(EC.element_to_be_clickable((By.XPATH, "(//INPUT[@class='select2-search__field'])[2]")))
-        driver.find_element_by_xpath("(//INPUT[@class='select2-search__field'])[2]").send_keys(
-            'User1' + Keys.ENTER)
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='FormHeader__caption'][text()='Счёт на оплату']")))
-        for element in driver.find_elements_by_class_name('Switch__left'):
-            element.click()
-        time.sleep(1)
-        driver.find_element_by_xpath("//DIV[@class='Button__content']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//*[text()[contains(.,'Все документы проверены')]]")))
-        driver.close()
-        time.sleep(0.5)
-        driver.switch_to.window(driver.window_handles[-1])
+        Selenium1_test_Pilot.test037_PayTS(self)
 
     def test039_BackToPart(self):
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//DIV[@class='FmButtonNext__icon']")))
-        driver.find_element_by_xpath("//DIV[@class='FmButtonNext__icon']").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,
-                                                     "//DIV[@class='ForForm__H1'][text()='Параметры кредита']")))
-        time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
 
 
 if __name__ == '__main__':
