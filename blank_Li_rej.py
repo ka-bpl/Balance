@@ -600,53 +600,22 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_class_name('FmButtonNext__wrap').click()
         print('Переходим в раздел 7. Выбор условий, выбираем оно из условий и нажимаем ДАЛЕЕ >')
 
-    @unittest.skip('...')
     def test025_DealState_Ins1(self):
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Редактировать реквизиты')]]")))
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//BUTTON[@class='FmLink PageRequestStep08__loginPhone FmLink--size-medium -icon -icon-phone']")))
         time.sleep(1.5)
-        driver.find_element_by_xpath(
-            "(//BUTTON[@class='FmLink FmLink--size-medium'][text()='Редактировать реквизиты'][text()='Редактировать реквизиты'])[1]").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]").click()
-        wait.until(
-            EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
         #
 
     @unittest.skip('...')
     def test026_DealState_Ins2(self):
         time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//BUTTON[@class='FmLink FmLink--size-medium'][text()='Редактировать реквизиты'][text()='Редактировать реквизиты'])[2]").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]").click()
-        wait.until(
-            EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
 
     @unittest.skip('...')
     def test027_DealState_Ins3(self):
         time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//BUTTON[@class='FmLink FmLink--size-medium'][text()='Редактировать реквизиты'][text()='Редактировать реквизиты'])[3]").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]").click()
-        wait.until(
-            EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
 
     @unittest.skip('...')
     def test028_DealState_Ins4(self):
-        time.sleep(1)
-        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
-        driver.find_element_by_xpath(
-            "(//BUTTON[@class='FmLink FmLink--size-medium'][text()='Редактировать реквизиты'][text()='Редактировать реквизиты'])[4]").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]").click()
-        wait.until(
-            EC.invisibility_of_element_located((By.XPATH, "(//DIV[@class='PageRequestPaymentSelect__itemHeader'])[2]")))
         time.sleep(1)
 
     def test029_AttachFiles(self):
@@ -666,19 +635,6 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("(//INPUT[@type='file'])[5]").send_keys(
             "/docs/Litvin/СчётЗаТС.png"
         )  # Счёт на оплату ТС
-
-        # driver.find_element_by_xpath("(//INPUT[@type='file'])[6]").send_keys(
-        #     "/docs/Litvin/СчётЗаСтраховку.png"
-        # )  # Счёт на оплату КАСКО
-        # driver.find_element_by_xpath("(//INPUT[@type='file'])[7]").send_keys(
-        #     "/docs/Litvin/СчётЗаСтраховку.png"
-        # )  # Счёт на оплату Страхования Жизни
-        # driver.find_element_by_xpath("(//INPUT[@type='file'])[8]").send_keys(
-        #     "/docs/Litvin/СчётЗаСтраховку.png"
-        # )  # Счёт на оплату GAP Страхование
-        # driver.find_element_by_xpath("(//INPUT[@type='file'])[9]").send_keys(
-        #     "/docs/Litvin/СчётЗаСтраховку.png"
-        # )  # Счёт на оплату Дорожная Карта
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.75)
