@@ -791,27 +791,39 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//DIV[@class='FmButtonLabel__wrap'])[2]")))
 
     def test035_BeginDownloadDocs(self):
+        time.sleep(0.5)
+        print('дождаться клшикабельности кнопки выпадающего меню')
         driver.find_element_by_xpath("(//DIV[@class='FmButtonLabel__wrap'])[2]").click()
         time.sleep(1)
+        print("клик по выпадающем меню")
         # Индивидуальные условия
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Индивидуальные условия)]]")))
-        t = driver.find_element_by_xpath("//*[text()[contains(.,'Индивидуальные условия)]]").get_attribute('href')
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Индивидуальные условия']")))
+        print("дождаться кликабельности кнопки/текста ИУ")
+        time.sleep(1)
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Индивидуальные условия']").get_attribute('href')
         filereq = requests.get(t, stream=True, verify=False)
         with open(r"/docs/reports//" + 'IU' + ".pdf", "wb") as receive:
             shutil.copyfileobj(filereq.raw, receive)
         del filereq
         print("Документы Индивидуальные условия загружены")
-        # Анкета-заявка
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Анкета-заявка)]]")))
-        t = driver.find_element_by_xpath("//*[text()[contains(.,'Анкета-заявка)]]").get_attribute('href')
+
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Анкета-заявка']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Анкета-заявка']").get_attribute('href')
         filereq = requests.get(t, stream=True, verify=False)
         with open(r"/docs/reports//" + 'Az' + ".pdf", "wb") as receive:
             shutil.copyfileobj(filereq.raw, receive)
         del filereq
         print("Документы Анкета-заявка загружены")
+
         # График платежей
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'График платежей)]]")))
-        t = driver.find_element_by_xpath("//*[text()[contains(.,'График платежей)]]").get_attribute('href')
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='График платежей']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='График платежей']").get_attribute('href')
         filereq = requests.get(t, stream=True, verify=False)
         with open(r"/docs/reports//" + 'Gp' + ".pdf", "wb") as receive:
             shutil.copyfileobj(filereq.raw, receive)
@@ -819,24 +831,30 @@ class Selenium1_test_Pilot(unittest.TestCase):
         print("Документы График платежей загружены")
         # -----
         # Заявл. на открытие счетов
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Заявл. на открытие счетов)]]")))
-        t = driver.find_element_by_xpath("//*[text()[contains(.,'Заявл. на открытие счетов)]]").get_attribute('href')
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Заявл. на открытие счетов']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Заявл. на открытие счетов']").get_attribute('href')
         filereq = requests.get(t, stream=True, verify=False)
         with open(r"/docs/reports//" + 'Zos' + ".pdf", "wb") as receive:
             shutil.copyfileobj(filereq.raw, receive)
         del filereq
         print("Документы Заявл. на открытие счетов загружены")
         # Заявление на перевод за ТС
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Заявление на перевод за ТС)]]")))
-        t = driver.find_element_by_xpath("//*[text()[contains(.,'Заявление на перевод за ТС)]]").get_attribute('href')
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Заявление на перевод за ТС']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Заявление на перевод за ТС']").get_attribute('href')
         filereq = requests.get(t, stream=True, verify=False)
         with open(r"/docs/reports//" + 'Zpts' + ".pdf", "wb") as receive:
             shutil.copyfileobj(filereq.raw, receive)
         del filereq
         print("Документы Заявление на перевод за ТС загружены")
         # Заявление на перевод за КАСКО
-        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()[contains(.,'Заявление на перевод за КАСКО)]]")))
-        t = driver.find_element_by_xpath("//*[text()[contains(.,'Заявление на перевод за КАСКО)]]").get_attribute('href')
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Заявление на перевод за КАСКО']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Заявление на перевод за КАСКО']").get_attribute('href')
         filereq = requests.get(t, stream=True, verify=False)
         with open(r"/docs/reports//" + 'ZpKASKO' + ".pdf", "wb") as receive:
             shutil.copyfileobj(filereq.raw, receive)
@@ -849,32 +867,33 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1)
         # iu
         driver.find_element_by_xpath("(//INPUT[@type='file'])[1]").send_keys(
-            "/docs/reports/iu.pdf")
-        print("")
+            "/docs/reports/IU.pdf")
+        print("Загружаем индивидуальные условия")
         # gp
         driver.find_element_by_xpath("(//INPUT[@type='file'])[2]").send_keys(
-            "/docs/reports/gp.pdf")
-        print("")
+            "/docs/reports/Gp.pdf")
+        print("Загружаем график платежей")
         # az
         driver.find_element_by_xpath("(//INPUT[@type='file'])[3]").send_keys(
-            "/docs/reports/az.pdf")
-        print("")
+            "/docs/reports/Az.pdf")
+        print("Загружаем анкету")
         # zos
         driver.find_element_by_xpath("(//INPUT[@type='file'])[4]").send_keys(
-            "/docs/reports/zos.pdf")
-        print("")
+            "/docs/reports/Zos.pdf")
+        print("Загружаем заявление на открытие счетов")
         # zpts
         driver.find_element_by_xpath("(//INPUT[@type='file'])[5]").send_keys(
-            "/docs/reports/zpts.pdf")
-        print("")
+            "/docs/reports/Zpts.pdf")
+        print("Загружаем заяление перевода денег за ТС")
         # kasko
         driver.find_element_by_xpath("(//INPUT[@type='file'])[6]").send_keys(
-            "/docs/reports/zpkasko.pdf")  # passportIv.pdf PassFor6Step.pdf
-        print("")
+            "/docs/reports/ZpKASKO.pdf")  # passportIv.pdf PassFor6Step.pdf
+        print("Загружаем заявление перевода денег за КАСКО")
         # kasko blank
         driver.find_element_by_xpath("(//INPUT[@type='file'])[7]").send_keys(
-            "/docs/reports/zpkasko.pdf")  # passportIv.pdf PassFor6Step.pdf
-        print("")
+            "/docs/reports/ZpKASKO.pdf")  # passportIv.pdf PassFor6Step.pdf
+        print("Загружаем полис КАСКО")
+        wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
 
 
 if __name__ == '__main__':
