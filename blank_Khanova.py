@@ -139,9 +139,9 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH,
                                                      "//DIV[@class='ForForm__H1'][text()='Параметры кредита и ТС']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[41])  # Стоимость ТС, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[43])  # Первоначальный взнос, руб.
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[45])  # Срок кредита, мес.
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys('3000000')  # Стоимость ТС, руб. 'array[41]'
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys('0')  # Первоначальный взнос, руб. 43
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys('60')  # Срок кредита, мес. 45
         driver.find_element_by_xpath("(//INPUT[@type='text'])[5]").send_keys(array[47])  # Комфортный платёж, руб.
         time.sleep(1)
         driver.find_element_by_xpath(
