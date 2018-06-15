@@ -597,7 +597,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "FmButtonLabel__wrap")))
         driver.find_element_by_xpath(
             "(//DIV[@class='FmButtonRadio__icon -disabled-no -checked-no -focus-no'])[2]").click()
-        driver.find_element_by_class_name('FmButtonNext__wrap').click()
+        driver.find_element_by_xpath("//DIV[@class='FmButtonNext__icon']").click()
         print('Переходим в раздел 7. Выбор условий, выбираем оно из условий и нажимаем ДАЛЕЕ >')
 
     def test025_DealState_Ins1(self):
@@ -606,19 +606,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         time.sleep(1.5)
         #
 
-    @unittest.skip('...')
-    def test026_DealState_Ins2(self):
-        time.sleep(1)
-
-    @unittest.skip('...')
-    def test027_DealState_Ins3(self):
-        time.sleep(1)
-
-    @unittest.skip('...')
-    def test028_DealState_Ins4(self):
-        time.sleep(1)
-
-    def test029_AttachFiles(self):
+    def test026_AttachFiles(self):
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
         time.sleep(0.5)
         driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
@@ -641,14 +629,14 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.find_element_by_xpath("//DIV[@class='FmButtonNext__wrap'][text()='Сделка']").click()
         print('Вводим расчётный счёт и переходим к п. 9. Сделка')
 
-    def test030_LetMeIn(self):
+    def test027_LetMeIn(self):
         time.sleep(1)
         driver.execute_script("window.open('https://verification-staging.project30.pro/admin/','_blank');")
         driver.switch_to.window(driver.window_handles[-1])
         time.sleep(3)
         wait.until(EC.element_to_be_clickable((By.NAME, "query")))
 
-    def test031_PhotoReject(self):
+    def test028_PhotoReject(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -664,7 +652,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test032_DKPReject(self):
+    def test029_DKPReject(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -678,7 +666,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test033_FirstPayReject(self):
+    def test030_FirstPayReject(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
@@ -691,23 +679,11 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    @unittest.skip('...')
-    def test034_InsLifeReject(self):
-        time.sleep(0.5)
-
-    @unittest.skip('...')
-    def test035_KASKOReject(self):
-        time.sleep(0.5)
-
-    @unittest.skip('...')
-    def test036_RoadMapReject(self):
-        time.sleep(0.5)
-
-    def test037_PayTS(self):
+    def test031_PayTS(self):
         time.sleep(1)
         driver.find_element_by_name('query').clear()
         time.sleep(1)
-        driver.find_element_by_name('query').send_keys(num + '26' + Keys.RETURN)
+        driver.find_element_by_name('query').send_keys(num + '25' + Keys.RETURN)
         time.sleep(0.5)
         time.sleep(1)
         wait.until(EC.element_to_be_clickable((By.XPATH, "(//I[@class='fa fa-check-square'])[1]")))
@@ -717,14 +693,77 @@ class Selenium1_test_Pilot(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(0.5)
 
-    def test038_PayTS(self):
+    def test032_PayTS(self):
         time.sleep(0.5)
-        Selenium1_test_Pilot.test037_PayTS(self)
+        Selenium1_test_Pilot.test031_PayTS(self)
 
-    def test039_BackToPart(self):
+    def test033_BackToPart(self):
         driver.close()
         time.sleep(0.5)
         driver.switch_to.window(driver.window_handles[-1])
+        wait.until(EC.element_to_be_clickable((By.XPATH, "(//DIV[@class='FmButtonLabel__wrap'])[2]")))
+
+    @unittest.skip('...')
+    def test034_DownloadDocs(self):
+        time.sleep(0.5)
+        print('дождаться клшикабельности кнопки выпадающего меню')
+        driver.find_element_by_xpath("(//DIV[@class='FmButtonLabel__wrap'])[2]").click()
+        time.sleep(1)
+        print("клик по выпадающем меню")
+        # Индивидуальные условия
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Индивидуальные условия']")))
+        print("дождаться кликабельности кнопки/текста ИУ")
+        time.sleep(1)
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Индивидуальные условия']").get_attribute('href')
+        filereq = requests.get(t, stream=True, verify=False)
+        with open(r"/docs/reportKASKO//" + 'IU' + ".pdf", "wb") as receive:
+            shutil.copyfileobj(filereq.raw, receive)
+        del filereq
+        print("Документы Индивидуальные условия загружены")
+
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Анкета-заявка']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Анкета-заявка']").get_attribute('href')
+        filereq = requests.get(t, stream=True, verify=False)
+        with open(r"/docs/reportKASKO//" + 'Az' + ".pdf", "wb") as receive:
+            shutil.copyfileobj(filereq.raw, receive)
+        del filereq
+        print("Документы Анкета-заявка загружены")
+
+        # График платежей
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='График платежей']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='График платежей']").get_attribute('href')
+        filereq = requests.get(t, stream=True, verify=False)
+        with open(r"/docs/reportKASKO//" + 'Gp' + ".pdf", "wb") as receive:
+            shutil.copyfileobj(filereq.raw, receive)
+        del filereq
+        print("Документы График платежей загружены")
+        # -----
+        # Заявл. на открытие счетов
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Заявл. на открытие счетов']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Заявл. на открытие счетов']").get_attribute('href')
+        filereq = requests.get(t, stream=True, verify=False)
+        with open(r"/docs/reportKASKO//" + 'Zos' + ".pdf", "wb") as receive:
+            shutil.copyfileobj(filereq.raw, receive)
+        del filereq
+        print("Документы Заявл. на открытие счетов загружены")
+        # Заявление на перевод за ТС
+        wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//A[@class='PageRequestStep09__printLink'][text()='Заявление на перевод за ТС']")))
+        t = driver.find_element_by_xpath(
+            "//A[@class='PageRequestStep09__printLink'][text()='Заявление на перевод за ТС']").get_attribute('href')
+        filereq = requests.get(t, stream=True, verify=False)
+        with open(r"/docs/reportKASKO//" + 'Zpts' + ".pdf", "wb") as receive:
+            shutil.copyfileobj(filereq.raw, receive)
+        del filereq
+        print("Документы Заявление на перевод за ТС загружены")
 
 
 if __name__ == '__main__':
