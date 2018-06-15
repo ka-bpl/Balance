@@ -894,6 +894,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             "/docs/reports/ZpKASKO.pdf")  # passportIv.pdf PassFor6Step.pdf
         print("Загружаем полис КАСКО")
         wait.until(EC.invisibility_of_element_located((By.XPATH, "//DIV[@class='FormAttachmentsTab__sending']")))
+        driver.close()
 
 
 if __name__ == '__main__':
