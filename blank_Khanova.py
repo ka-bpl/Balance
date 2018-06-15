@@ -303,7 +303,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
             element.click()
         time.sleep(0.5)
         # первый скан
-        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys('79 05 245657')    #array[5]
+        driver.find_element_by_id('INPUT_PASSPORT_SERIES_NUMBER').send_keys(array[5])    #array[5]
         time.sleep(0.5)
         driver.find_element_by_id('signature').click()
 
