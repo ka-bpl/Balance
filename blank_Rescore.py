@@ -623,19 +623,19 @@ class Selenium1_test_Pilot(unittest.TestCase):
         try:
             driver.find_element_by_id('year').click()
             time.sleep(0.5)
-            driver.find_element_by_id('year').send_keys('2013')  # Год выпуска
+            driver.find_element_by_id('year').send_keys('2010')  # Год выпуска
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('enginePower').click()
             time.sleep(0.5)
-            driver.find_element_by_id('enginePower').send_keys('60')  # Мощность
+            driver.find_element_by_id('enginePower').send_keys('170')  # Мощность
         except:
             print('Second check of PTS')
         try:
             driver.find_element_by_id('engineCapacity').click()
             time.sleep(0.5)
-            driver.find_element_by_id('engineCapacity').send_keys('1600')  # Объем двигателя, см³
+            driver.find_element_by_id('engineCapacity').send_keys('1984')  # Объем двигателя, см³
         except:
             print('Second check of PTS')
         try:
