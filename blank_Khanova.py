@@ -66,7 +66,7 @@ class Selenium1_test_Pilot(unittest.TestCase):
     def test003_CorrectCreatePassportData(self):
         time.sleep(0.5)
         wait.until(EC.visibility_of_element_located((By.XPATH, "//DIV[@class='ForForm__H1'][text()='Паспортные данные гражданина РФ']")))
-        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys('79 05 245657')  #серия и номер паспорта array[5]
+        driver.find_element_by_xpath("(//INPUT[@type='text'])[1]").send_keys(array[5])  #серия и номер паспорта array[5]
         driver.find_element_by_xpath("(//INPUT[@type='text'])[2]").send_keys(array[7])  # дата выдачи
         driver.find_element_by_xpath("(//INPUT[@type='text'])[3]").send_keys(array[9])      # код подразделения
         driver.find_element_by_xpath("(//INPUT[@type='text'])[4]").send_keys(array[90])      # место рождения
